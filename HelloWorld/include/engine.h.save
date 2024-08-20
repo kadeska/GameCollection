@@ -1,0 +1,17 @@
+#ifndef ENGINE_H
+#define ENGINE_H
+
+class engine
+{
+    public:
+        engine();
+        int engine::create_Window();
+        void engine::processInput();
+        void engine::framebuffer_size_callback();
+
+    protected:
+
+    private:
+};
+
+#endif // ENGINE_H
