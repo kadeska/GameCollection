@@ -1,5 +1,4 @@
 
-HelloWorld/HelloWorld.depend
-HelloWorld/HelloWorld.layout
-HelloWorld/HelloWorld.layout.save
-HelloWorld/HelloWorld.depend
+HelloWorld/*.depend
+HelloWorld/*.layout
+HelloWorld/*.layout.save
