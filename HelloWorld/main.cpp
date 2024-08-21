@@ -7,6 +7,7 @@
 
 //using namespace std;
 // something for dev branch
+// Developmental branch has more comments from mobile edits and may contain other code for testing purposes. 
 
 //--------------------------------------function declaraions
 float work();
@@ -21,18 +22,19 @@ bool loop = true;
 int main()
 {
     std::cout << "Hello world!" << '\n';
-    //while(loop){work();};
+    //while(loop){work();}; I'd like to re-work the work() function so it is reader friendly and optimized. And should I move the while() loop into this scope or keep it inside the scope of the work() function? 
     work();
     return 0;
 }
 
+//rename to something better 
 //work() returns an int based on the given input
 float work()
 {
     float y;
     int i;
 
-    while(loop)
+    while(loop) // re-work this to be optimized and reader friendly. Having multiple if statements is not ideal. 
     {
         std::string str;
         std::cout << "Please enter a number 0 through 9" << '\n';
@@ -57,7 +59,10 @@ float work()
         {
             std::cout << "Breakout Game!...\n";
             startProgram();
+            // maybe break out of loop after program ends. This might fix the segmentation fault. 
         }
+
+        // this is nothing special, just ignore this.
         if (i >= 0 && i <= 9)
         {
             std::cout << "You entered: " << i << '\n';
@@ -75,6 +80,7 @@ float work()
 }
 
 //algorithmA takes an input and returns some int output after some manipulation.
+// Planning to learn about algorithms later. 
 float algorithm_A(int input)
 {
     float x = (input * 1.0);
@@ -95,7 +101,7 @@ int parsToInt(std::string str)
     }
 }
 
-void test()
+void test() //check compiler compliance?
 {
     std::cout << std::numeric_limits<float>::is_iec559 << '\n';
     std::cout << std::numeric_limits<double>::is_iec559 << '\n';
