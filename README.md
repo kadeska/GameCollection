@@ -4,8 +4,6 @@
 
 * This branch may or may not be stable, meaning this branch may not build correctly or may fail to build/run. This build is not intended for release. 
 
-* The process of pushing code to the release branch is defined in the release branch Readme.
-
 
 # Notes: A collection of general notes. 
 
