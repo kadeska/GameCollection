@@ -59,6 +59,7 @@ Shader ResourceManager::loadShaderFromFile(const char *vShaderFile, const char *
     std::string vertexCode;
     std::string fragmentCode;
     std::string geometryCode;
+
     try
     {
         // open files
@@ -73,7 +74,10 @@ Shader ResourceManager::loadShaderFromFile(const char *vShaderFile, const char *
         fragmentShaderFile.close();
         // convert stream into string
         vertexCode = vShaderStream.str();
+        //std::cout << vertexCode << "1" << '\n';
         fragmentCode = fShaderStream.str();
+        //std::cout << fragmentCode << "2" << '\n';
+
         // if geometry shader path is present, also load a geometry shader
         if (gShaderFile != nullptr)
         {

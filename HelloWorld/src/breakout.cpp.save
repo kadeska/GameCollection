@@ -6,6 +6,8 @@
 ** Creative Commons, either version 4 of the License, or (at your
 ** option) any later version.
 ******************************************************************/
+#include <iostream>
+
 #include "breakout.h"
 #include "resourceManager.h"
 #include "spriteRenderer.h"
@@ -29,9 +31,12 @@ Game::~Game()
 void Game::Init()
 {
     // load shaders
-    const char *vs = "shaders/breakout/sprite_vertex.vs";
-    const char fs = "shaders/breakout/sprite_fragment.frag";
-    char gs = nullptr;
+    const char *vs = "/shaders/breakout/sprite_vertex.vs";
+    const char *fs = "/shaders/breakout/sprite_fragment.fs";
+    const char *gs = nullptr;
+
+    //std::cout << vs;
+
     ResourceManager::LoadShader(vs, fs, gs, "sprite");
     // configure shaders
     glm::mat4 projection = glm::ortho(0.0f, static_cast<float>(this->Width),
