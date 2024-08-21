@@ -7,7 +7,8 @@
 
 //using namespace std;
 // something for dev branch
-// Developmental branch has more comments from mobile edits and may contain other code for testing purposes. 
+// Developmental branch has more comments from mobile edits and may contain other code for testing purposes.
+ 
 
 //--------------------------------------function declaraions
 float work();
