@@ -1,9 +1,8 @@
 # Welcome to the Main branch!
 
-* This branch is the live working branch. Not meant for release but may be stable enough for pre-release or alpha/beta releaseGame.
+* This branch is the live working branch. Not meant for release but may be stable enough for pre-release or alpha/beta release.
 
-#           
-#  BREAKOUT GAME 
-# 
+
+#  **BREAKOUT GAME**
 
 ## Welcome to Breakout game.
