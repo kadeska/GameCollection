@@ -13,7 +13,7 @@
 
 ###  **BREAKOUT GAME**
 
-##### Welcome to Breakout game.
+##### Welcome to Breakout game. *  in development 
 
 * Destroy *all* bricks to clear the level.
 * Use 'WASD' or arrow keys to move platform.
