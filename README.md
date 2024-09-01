@@ -4,16 +4,16 @@
 * This branch is the live working branch. Not meant for release but may be stable enough for pre-release or alpha/beta release.
 
 
-# Games 
+## Games 
 
 * My goal is to create a 2D game. I want my game to end up as a representation of my favorite style of video game, an open world RPG. I'd like to have concepts from MineCraft such as; blocks, crafting, and open world. With my own twist on things. And concepts from World of Warcraft such as; quests, and an upgrade tree.
 
 * The following is a list of games that I made, or still working on. 
 
 
-##  **BREAKOUT GAME**
+###  **BREAKOUT GAME**
 
-### Welcome to Breakout game.
+#### Welcome to Breakout game.
 
 * Destroy *all* bricks to clear the level.
 * Use 'WASD' or arrow keys to move platform.
