@@ -8,7 +8,7 @@
 * This branch will contain documentation.  
 
 
-# Notes: A collection of general notes. 
+## Notes: A collection of general notes. 
 
 * use "std::string_view" instead of "std::string" when read only access is wanted. Make sure to '#include <string_view>'
 
