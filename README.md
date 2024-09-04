@@ -12,6 +12,8 @@
 
 * use "std::string_view" instead of "std::string" when read only access is wanted. Make sure to '#include <string_view>'
 
+* default parameters can be used for function parameters whose value can be "optionally changed" 
+
 
 
 ###### testing 
