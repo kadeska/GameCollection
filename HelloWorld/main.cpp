@@ -7,7 +7,7 @@
 
 //using namespace std;
 
-// Release v0.1.1
+// Master
 
 //--------------------------------------function declaraions
 float work();
