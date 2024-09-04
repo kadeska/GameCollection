@@ -55,7 +55,7 @@ public:
     std::vector<GameLevel>  Levels;
     unsigned int            Level;
     // constructor/destructor
-    Game(unsigned int width, unsigned int height);
+    Breakout(unsigned int width, unsigned int height);
     ~Breakout();
     // initialize game state (load all shaders/textures/levels)
     void Init();
