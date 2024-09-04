@@ -41,6 +41,8 @@
 		</Unit>
 		<Unit filename="include/breakout.h" />
 		<Unit filename="include/engine.h" />
+		<Unit filename="include/gameLevel.h" />
+		<Unit filename="include/gameObject.h" />
 		<Unit filename="include/glm/common.hpp" />
 		<Unit filename="include/glm/detail/_features.hpp" />
 		<Unit filename="include/glm/detail/_fixes.hpp" />
@@ -337,9 +339,15 @@
 		<Unit filename="include/spriteRenderer.h" />
 		<Unit filename="include/stb_image.h" />
 		<Unit filename="include/texture.h" />
+		<Unit filename="levels/four.lvl" />
+		<Unit filename="levels/one.lvl" />
+		<Unit filename="levels/three.lvl" />
+		<Unit filename="levels/two.lvl" />
 		<Unit filename="main.cpp" />
 		<Unit filename="src/breakout.cpp" />
 		<Unit filename="src/engine.cpp" />
+		<Unit filename="src/gameLevel.cpp" />
+		<Unit filename="src/gameObject.cpp" />
 		<Unit filename="src/program.cpp" />
 		<Unit filename="src/resourceManager.cpp" />
 		<Unit filename="src/shader.cpp" />
@@ -350,6 +358,10 @@
 		<Unit filename="src/spriteRenderer.cpp" />
 		<Unit filename="src/texture.cpp" />
 		<Unit filename="textures/awesomeface.png" />
+		<Unit filename="textures/background.jpg" />
+		<Unit filename="textures/block.png" />
+		<Unit filename="textures/block_solid.png" />
+		<Unit filename="textures/paddle.png" />
 		<Extensions />
 	</Project>
 </CodeBlocks_project_file>
