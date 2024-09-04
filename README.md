@@ -16,7 +16,7 @@
 
 * Function templates are useful when I want to have multiple function overloads. Function templates allow the user to create a function with any argument types they want. (example) 
 
-$ "template <typename T>
+** "template <typename T>
 T addOne(T x)
 {
     return x + 1;
