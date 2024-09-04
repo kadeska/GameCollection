@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1725479696 source:/home/joseph/Dev/codeblocks/HelloWorld/main.cpp
+1725486677 source:/home/joseph/Dev/codeblocks/HelloWorld/main.cpp
 	<iostream>
 	<limits>
 	<string>
@@ -37,11 +37,12 @@
 	<sstream>
 	<iostream>
 
-1725484284 source:/home/joseph/Dev/codeblocks/HelloWorld/src/breakout.cpp
+1725488640 source:/home/joseph/Dev/codeblocks/HelloWorld/src/breakout.cpp
 	"breakout.h"
 	"resourceManager.h"
 	"spriteRenderer.h"
 	"gameObject.h"
+	"ballObject.h"
 
 1725484284 /home/joseph/Dev/codeblocks/HelloWorld/include/breakout.h
 	<glad/glad.h>
@@ -1066,4 +1067,13 @@
 	"gameLevel.h"
 	<fstream>
 	<sstream>
+
+1725488128 source:/home/joseph/Dev/codeblocks/HelloWorld/src/ballObject.cpp
+	"ballObject.h"
+
+1725488148 /home/joseph/Dev/codeblocks/HelloWorld/include/ballObject.h
+	<glad/glad.h>
+	<glm/glm.hpp>
+	"gameObject.h"
+	"texture.h"
 

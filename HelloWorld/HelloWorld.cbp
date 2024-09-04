@@ -39,6 +39,7 @@
 		<Unit filename="glad.c">
 			<Option compilerVar="CC" />
 		</Unit>
+		<Unit filename="include/ballObject.h" />
 		<Unit filename="include/breakout.h" />
 		<Unit filename="include/engine.h" />
 		<Unit filename="include/gameLevel.h" />
@@ -344,6 +345,7 @@
 		<Unit filename="levels/three.lvl" />
 		<Unit filename="levels/two.lvl" />
 		<Unit filename="main.cpp" />
+		<Unit filename="src/ballObject.cpp" />
 		<Unit filename="src/breakout.cpp" />
 		<Unit filename="src/engine.cpp" />
 		<Unit filename="src/gameLevel.cpp" />
@@ -359,6 +361,7 @@
 		<Unit filename="src/texture.cpp" />
 		<Unit filename="textures/awesomeface.png" />
 		<Unit filename="textures/background.jpg" />
+		<Unit filename="textures/ball.png" />
 		<Unit filename="textures/block.png" />
 		<Unit filename="textures/block_solid.png" />
 		<Unit filename="textures/paddle.png" />
