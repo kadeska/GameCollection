@@ -7,6 +7,8 @@
 
 //using namespace std;
 
+// Release v0.1.1
+
 //--------------------------------------function declaraions
 float work();
 float algorithm_A(int input);
