@@ -5,7 +5,9 @@
 
 * This branch may or may not be stable, meaning this branch may not build correctly or may fail to build/run. This build is not intended for release. 
 
-* This branch will contain documentation.  
+* This branch will contain documentation.
+
+* This branch may be behind the Main branch.  
 
 
 ## Notes: A collection of general notes. 
