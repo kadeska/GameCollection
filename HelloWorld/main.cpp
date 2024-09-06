@@ -6,9 +6,7 @@
 #include "program.h"
 
 //using namespace std;
-// something for dev branch
-// Developmental branch has more comments from mobile edits and may contain other code for testing purposes.
- 
+
 
 // Master
 
@@ -25,19 +23,19 @@ bool loop = true;
 int main()
 {
     std::cout << "Hello world!" << '\n';
-    //while(loop){work();}; I'd like to re-work the work() function so it is reader friendly and optimized. And should I move the while() loop into this scope or keep it inside the scope of the work() function? 
+    //while(loop){work();}; I'd like to re-work the work() function so it is reader friendly and optimized. And should I move the while() loop into this scope or keep it inside the scope of the work() function?
     work();
     return 0;
 }
 
-//rename to something better 
+//rename to something better
 //work() returns an int based on the given input
 float work()
 {
     float y;
     int i;
 
-    while(loop) // re-work this to be optimized and reader friendly. Having multiple if statements is not ideal. 
+    while(loop) // re-work this to be optimized and reader friendly. Having multiple if statements is not ideal.
     {
         std::string str;
         std::cout << "Please enter a number 0 through 9" << '\n';
@@ -63,7 +61,7 @@ float work()
             std::cout << "Breakout Game!...\n";
             startProgram();
             //return 0;
-            // maybe break out of loop after program ends. This might fix the segmentation fault. 
+            // maybe break out of loop after program ends. This might fix the segmentation fault.
         }
 
         // this is nothing special, just ignore this.
@@ -84,7 +82,7 @@ float work()
 }
 
 //algorithmA takes an input and returns some int output after some manipulation.
-// Planning to learn about algorithms later. 
+// Planning to learn about algorithms later.
 float algorithm_A(int input)
 {
     float x = (input * 1.0);
