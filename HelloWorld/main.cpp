@@ -58,6 +58,7 @@ float work()
         {
             std::cout << "Breakout Game!...\n";
             startProgram();
+            //return 0;
         }
         if (i >= 0 && i <= 9)
         {
