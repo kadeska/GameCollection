@@ -369,6 +369,7 @@
 		<Unit filename="textures/block.png" />
 		<Unit filename="textures/block_solid.png" />
 		<Unit filename="textures/paddle.png" />
+		<Unit filename="textures/particle.png" />
 		<Extensions />
 	</Project>
 </CodeBlocks_project_file>
