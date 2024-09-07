@@ -60,7 +60,7 @@ float work()
         {
             std::cout << "Breakout Game!...\n";
             startProgram();
-            //return 0;
+            return 0;
             // maybe break out of loop after program ends. This might fix the segmentation fault.
         }
 
