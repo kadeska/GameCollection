@@ -6,8 +6,6 @@
 ** Creative Commons, either version 4 of the License, or (at your
 ** option) any later version.
 ******************************************************************/
-#include <iostream>
-
 #include "breakout.h"
 #include "resourceManager.h"
 #include "spriteRenderer.h"
@@ -16,9 +14,9 @@
 #include "particleGenerator.h"
 
 // Game-related State data
-SpriteRenderer  *Renderer;
-GameObject      *Player;
-BallObject      *Ball;
+SpriteRenderer    *Renderer;
+GameObject        *Player;
+BallObject        *Ball;
 ParticleGenerator *Particles;
 
 // collision detection
@@ -30,12 +28,14 @@ Direction VectorDirection(glm::vec2 closest);
 
 // contructor
 Breakout::Breakout(unsigned int width, unsigned int height)
+
+Breakout::Game(unsigned int width, unsigned int height)
     : State(GAME_ACTIVE), Keys(), Width(width), Height(height)
 {
 
 }
 
-Breakout::~Breakout()
+Breakout::~Game()
 {
     delete Renderer;
     delete Player;
@@ -43,7 +43,7 @@ Breakout::~Breakout()
     delete Particles;
 }
 
-void Breakout::Init()
+void Game::Init()
 {
     // load shaders
     //ResourceManager::LoadShader("shaders/sprite.vs", "shaders/sprite.frag", nullptr, "sprite");
@@ -55,14 +55,15 @@ void Breakout::Init()
     const char *fs_particle = "/home/joseph/Dev/codeblocks/HelloWorld/src/shaders/particle_fragment.frag";
     const char *gs_particle = nullptr;
 
-    std::cout << vs_sprite;
-    std::cout << vs_particle;
+    std::cout << vs_particle << "\n";
+    std::cout << vs_particle << "\n";
 
     //std::cout << vs;
 
+
+
     ResourceManager::LoadShader(vs_sprite, fs_sprite, gs_sprite, "sprite");
     ResourceManager::LoadShader(vs_particle, fs_particle, gs_particle, "particle");
-
     // configure shaders
     glm::mat4 projection = glm::ortho(0.0f, static_cast<float>(this->Width),
                                       static_cast<float>(this->Height), 0.0f, -1.0f, 1.0f);
@@ -70,12 +71,14 @@ void Breakout::Init()
     ResourceManager::GetShader("sprite").SetMatrix4("projection", projection);
     ResourceManager::GetShader("particle").Use().SetInteger("sprite", 0);
     ResourceManager::GetShader("particle").SetMatrix4("projection", projection);
+
     // set render-specific controls
-    //Renderer = new SpriteRenderer(ResourceManager::GetShader("sprite"));
     Shader myShader;
     myShader = ResourceManager::GetShader("sprite");
     Renderer = new SpriteRenderer(myShader);
     Particles = new ParticleGenerator(ResourceManager::GetShader("particle"), ResourceManager::GetTexture("particle"), 500);
+
+
     // load textures
     ResourceManager::LoadTexture("textures/background.jpg", false, "background");
     ResourceManager::LoadTexture("textures/awesomeface.png", true, "face");
@@ -84,6 +87,9 @@ void Breakout::Init()
     ResourceManager::LoadTexture("textures/block_solid.png", false, "block_solid");
     ResourceManager::LoadTexture("textures/paddle.png", true, "paddle");
     ResourceManager::LoadTexture("textures/particle.png", true, "particle");
+
+
+    //Particles = new ParticleGenerator(ResourceManager::GetShader("particle"), ResourceManager::GetTexture("particle"), 500);
     // load levels
     GameLevel one;
     one.Load("levels/one.lvl", this->Width, this->Height / 2);
@@ -98,22 +104,21 @@ void Breakout::Init()
     this->Levels.push_back(three);
     this->Levels.push_back(four);
     this->Level = 0;
-    // configure game objects ----------------------------------------------------------------------------
-    // Player object
+    // configure game objects
     glm::vec2 playerPos = glm::vec2(this->Width / 2.0f - PLAYER_SIZE.x / 2.0f, this->Height - PLAYER_SIZE.y);
     Player = new GameObject(playerPos, PLAYER_SIZE, ResourceManager::GetTexture("paddle"));
     glm::vec2 ballPos = playerPos + glm::vec2(PLAYER_SIZE.x / 2.0f - BALL_RADIUS, -BALL_RADIUS * 2.0f);
-    Ball = new BallObject(ballPos, BALL_RADIUS, INITIAL_BALL_VELOCITY, ResourceManager::GetTexture("ball"));
+    Ball = new BallObject(ballPos, BALL_RADIUS, INITIAL_BALL_VELOCITY, ResourceManager::GetTexture("face"));
 }
 
-void Breakout::Update(float dt)
+void Game::Update(float dt)
 {
     // update objects
     Ball->Move(dt, this->Width);
-    // update particles
-    Particles->Update(dt, *Ball, 2, glm::vec2(Ball->Radius / 2.0f));
     // check for collisions
     this->DoCollisions();
+    // update particles
+    Particles->Update(dt, *Ball, 2, glm::vec2(Ball->Radius / 2.0f));
     // check loss condition
     if (Ball->Position.y >= this->Height) // did ball reach bottom edge?
     {
@@ -122,7 +127,7 @@ void Breakout::Update(float dt)
     }
 }
 
-void Breakout::ProcessInput(float dt)
+void Game::ProcessInput(float dt)
 {
     if (this->State == GAME_ACTIVE)
     {
@@ -151,15 +156,12 @@ void Breakout::ProcessInput(float dt)
     }
 }
 
-void Breakout::Render()
+void Game::Render()
 {
     if(this->State == GAME_ACTIVE)
     {
         // draw background
-        //Renderer->DrawSprite(ResourceManager::GetTexture("background"), glm::vec2(0.0f, 0.0f), glm::vec2(this->Width, this->Height), 0.0f);
-        Texture2D myTexture;
-        myTexture = ResourceManager::GetTexture("background");
-        Renderer->DrawSprite(myTexture, glm::vec2(0.0f, 0.0f), glm::vec2(this->Width, this->Height), 0.0f);
+        Renderer->DrawSprite(ResourceManager::GetTexture("background"), glm::vec2(0.0f, 0.0f), glm::vec2(this->Width, this->Height), 0.0f);
         // draw level
         this->Levels[this->Level].Draw(*Renderer);
         // draw player
@@ -172,7 +174,7 @@ void Breakout::Render()
 }
 
 
-void Breakout::ResetLevel()
+void Game::ResetLevel()
 {
     if (this->Level == 0)
         this->Levels[0].Load("levels/one.lvl", this->Width, this->Height / 2);
@@ -184,7 +186,7 @@ void Breakout::ResetLevel()
         this->Levels[3].Load("levels/four.lvl", this->Width, this->Height / 2);
 }
 
-void Breakout::ResetPlayer()
+void Game::ResetPlayer()
 {
     // reset player/ball stats
     Player->Size = PLAYER_SIZE;
@@ -192,7 +194,12 @@ void Breakout::ResetPlayer()
     Ball->Reset(Player->Position + glm::vec2(PLAYER_SIZE.x / 2.0f - BALL_RADIUS, -(BALL_RADIUS * 2.0f)), INITIAL_BALL_VELOCITY);
 }
 
-void Breakout::DoCollisions()
+// collision detection
+bool CheckCollision(GameObject &one, GameObject &two);
+Collision CheckCollision(BallObject &one, GameObject &two);
+Direction VectorDirection(glm::vec2 closest);
+
+void Game::DoCollisions()
 {
     for (GameObject &box : this->Levels[this->Level].Bricks)
     {

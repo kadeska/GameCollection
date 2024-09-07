@@ -16,9 +16,9 @@
 #include "particleGenerator.h"
 
 // Game-related State data
-SpriteRenderer  *Renderer;
-GameObject      *Player;
-BallObject      *Ball;
+SpriteRenderer    *Renderer;
+GameObject        *Player;
+BallObject        *Ball;
 ParticleGenerator *Particles;
 
 // collision detection
@@ -51,18 +51,19 @@ void Breakout::Init()
     const char *fs_sprite = "/home/joseph/Dev/codeblocks/HelloWorld/src/shaders/breakout/sprite_fragment.fs";
     const char *gs_sprite = nullptr;
 
-    const char *vs_particle = "/home/joseph/Dev/codeblocks/HelloWorld/src/shaders/particle_vertex.vs";
-    const char *fs_particle = "/home/joseph/Dev/codeblocks/HelloWorld/src/shaders/particle_fragment.frag";
+    const char *vs_particle = "/home/joseph/Dev/codeblocks/HelloWorld/src/shaders/breakout/particle_vertex.vs";
+    const char *fs_particle = "/home/joseph/Dev/codeblocks/HelloWorld/src/shaders/breakout/particle_fragment.fs";
     const char *gs_particle = nullptr;
 
-    std::cout << vs_particle << "\n";
-    std::cout << vs_particle << "\n";
+    //std::cout << vs_particle << "\n";
+    //std::cout << vs_particle << "\n";
 
     //std::cout << vs;
 
+
+
     ResourceManager::LoadShader(vs_sprite, fs_sprite, gs_sprite, "sprite");
     ResourceManager::LoadShader(vs_particle, fs_particle, gs_particle, "particle");
-
     // configure shaders
     glm::mat4 projection = glm::ortho(0.0f, static_cast<float>(this->Width),
                                       static_cast<float>(this->Height), 0.0f, -1.0f, 1.0f);
@@ -70,12 +71,14 @@ void Breakout::Init()
     ResourceManager::GetShader("sprite").SetMatrix4("projection", projection);
     ResourceManager::GetShader("particle").Use().SetInteger("sprite", 0);
     ResourceManager::GetShader("particle").SetMatrix4("projection", projection);
+
     // set render-specific controls
-    //Renderer = new SpriteRenderer(ResourceManager::GetShader("sprite"));
     Shader myShader;
     myShader = ResourceManager::GetShader("sprite");
     Renderer = new SpriteRenderer(myShader);
     Particles = new ParticleGenerator(ResourceManager::GetShader("particle"), ResourceManager::GetTexture("particle"), 500);
+
+
     // load textures
     ResourceManager::LoadTexture("textures/background.jpg", false, "background");
     ResourceManager::LoadTexture("textures/awesomeface.png", true, "face");
@@ -84,6 +87,9 @@ void Breakout::Init()
     ResourceManager::LoadTexture("textures/block_solid.png", false, "block_solid");
     ResourceManager::LoadTexture("textures/paddle.png", true, "paddle");
     ResourceManager::LoadTexture("textures/particle.png", true, "particle");
+
+
+    //Particles = new ParticleGenerator(ResourceManager::GetShader("particle"), ResourceManager::GetTexture("particle"), 500);
     // load levels
     GameLevel one;
     one.Load("levels/one.lvl", this->Width, this->Height / 2);
@@ -110,10 +116,10 @@ void Breakout::Update(float dt)
 {
     // update objects
     Ball->Move(dt, this->Width);
-    // update particles
-    Particles->Update(dt, *Ball, 2, glm::vec2(Ball->Radius / 2.0f));
     // check for collisions
     this->DoCollisions();
+    // update particles
+    Particles->Update(dt, *Ball, 2, glm::vec2(Ball->Radius / 2.0f));
     // check loss condition
     if (Ball->Position.y >= this->Height) // did ball reach bottom edge?
     {
@@ -191,6 +197,11 @@ void Breakout::ResetPlayer()
     Player->Position = glm::vec2(this->Width / 2.0f - PLAYER_SIZE.x / 2.0f, this->Height - PLAYER_SIZE.y);
     Ball->Reset(Player->Position + glm::vec2(PLAYER_SIZE.x / 2.0f - BALL_RADIUS, -(BALL_RADIUS * 2.0f)), INITIAL_BALL_VELOCITY);
 }
+
+// collision detection
+bool CheckCollision(GameObject &one, GameObject &two);
+Collision CheckCollision(BallObject &one, GameObject &two);
+Direction VectorDirection(glm::vec2 closest);
 
 void Breakout::DoCollisions()
 {
