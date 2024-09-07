@@ -1,5 +1,3 @@
-
-
 /*******************************************************************
 ** This code is part of Breakout.
 **
@@ -8,16 +6,20 @@
 ** Creative Commons, either version 4 of the License, or (at your
 ** option) any later version.
 ******************************************************************/
+#include <iostream>
+
 #include "breakout.h"
 #include "resourceManager.h"
 #include "spriteRenderer.h"
 #include "gameObject.h"
 #include "ballObject.h"
+#include "particleGenerator.h"
 
 // Game-related State data
 SpriteRenderer  *Renderer;
 GameObject      *Player;
 BallObject      *Ball;
+ParticleGenerator *Particles;
 
 // collision detection
 // -----------------------------------------------------------------------------------------------------------------
@@ -26,7 +28,7 @@ bool CheckCollision(GameObject &one, GameObject &two);
 Collision CheckCollision(BallObject &one, GameObject &two);
 Direction VectorDirection(glm::vec2 closest);
 
-// contruct
+// contructor
 Breakout::Breakout(unsigned int width, unsigned int height)
     : State(GAME_ACTIVE), Keys(), Width(width), Height(height)
 {
@@ -38,41 +40,59 @@ Breakout::~Breakout()
     delete Renderer;
     delete Player;
     delete Ball;
+    delete Particles;
 }
 
 void Breakout::Init()
 {
     // load shaders
     //ResourceManager::LoadShader("shaders/sprite.vs", "shaders/sprite.frag", nullptr, "sprite");
-    const char *vs = "/home/joseph/Dev/codeblocks/HelloWorld/src/shaders/breakout/sprite_vertex.vs";
-    const char *fs = "/home/joseph/Dev/codeblocks/HelloWorld/src/shaders/breakout/sprite_fragment.fs";
-    const char *gs = nullptr;
+    const char *vs_sprite = "/home/joseph/Dev/codeblocks/HelloWorld/src/shaders/breakout/sprite_vertex.vs";
+    const char *fs_sprite = "/home/joseph/Dev/codeblocks/HelloWorld/src/shaders/breakout/sprite_fragment.fs";
+    const char *gs_sprite = nullptr;
+
+    const char *vs_particle = "/home/joseph/Dev/codeblocks/HelloWorld/src/shaders/particle_vertex.vs";
+    const char *fs_particle = "/home/joseph/Dev/codeblocks/HelloWorld/src/shaders/particle_fragment.frag";
+    const char *gs_particle = nullptr;
+
+    std::cout << vs_sprite;
+    std::cout << vs_particle;
 
     //std::cout << vs;
 
-    ResourceManager::LoadShader(vs, fs, gs, "sprite");
+    ResourceManager::LoadShader(vs_sprite, fs_sprite, gs_sprite, "sprite");
+    ResourceManager::LoadShader(vs_particle, fs_particle, gs_particle, "particle");
 
     // configure shaders
     glm::mat4 projection = glm::ortho(0.0f, static_cast<float>(this->Width),
-        static_cast<float>(this->Height), 0.0f, -1.0f, 1.0f);
+                                      static_cast<float>(this->Height), 0.0f, -1.0f, 1.0f);
     ResourceManager::GetShader("sprite").Use().SetInteger("image", 0);
     ResourceManager::GetShader("sprite").SetMatrix4("projection", projection);
+    ResourceManager::GetShader("particle").Use().SetInteger("sprite", 0);
+    ResourceManager::GetShader("particle").SetMatrix4("projection", projection);
     // set render-specific controls
     //Renderer = new SpriteRenderer(ResourceManager::GetShader("sprite"));
     Shader myShader;
     myShader = ResourceManager::GetShader("sprite");
     Renderer = new SpriteRenderer(myShader);
+    Particles = new ParticleGenerator(ResourceManager::GetShader("particle"), ResourceManager::GetTexture("particle"), 500);
     // load textures
     ResourceManager::LoadTexture("textures/background.jpg", false, "background");
     ResourceManager::LoadTexture("textures/awesomeface.png", true, "face");
+    ResourceManager::LoadTexture("textures/ball.png", true, "ball");
     ResourceManager::LoadTexture("textures/block.png", false, "block");
     ResourceManager::LoadTexture("textures/block_solid.png", false, "block_solid");
     ResourceManager::LoadTexture("textures/paddle.png", true, "paddle");
+    ResourceManager::LoadTexture("textures/particle.png", true, "particle");
     // load levels
-    GameLevel one; one.Load("levels/one.lvl", this->Width, this->Height / 2);
-    GameLevel two; two.Load("levels/two.lvl", this->Width, this->Height / 2);
-    GameLevel three; three.Load("levels/three.lvl", this->Width, this->Height / 2);
-    GameLevel four; four.Load("levels/four.lvl", this->Width, this->Height / 2);
+    GameLevel one;
+    one.Load("levels/one.lvl", this->Width, this->Height / 2);
+    GameLevel two;
+    two.Load("levels/two.lvl", this->Width, this->Height / 2);
+    GameLevel three;
+    three.Load("levels/three.lvl", this->Width, this->Height / 2);
+    GameLevel four;
+    four.Load("levels/four.lvl", this->Width, this->Height / 2);
     this->Levels.push_back(one);
     this->Levels.push_back(two);
     this->Levels.push_back(three);
@@ -90,7 +110,9 @@ void Breakout::Update(float dt)
 {
     // update objects
     Ball->Move(dt, this->Width);
-     // check for collisions
+    // update particles
+    Particles->Update(dt, *Ball, 2, glm::vec2(Ball->Radius / 2.0f));
+    // check for collisions
     this->DoCollisions();
     // check loss condition
     if (Ball->Position.y >= this->Height) // did ball reach bottom edge?
@@ -142,6 +164,8 @@ void Breakout::Render()
         this->Levels[this->Level].Draw(*Renderer);
         // draw player
         Player->Draw(*Renderer);
+        // draw particles
+        Particles->Draw();
         // draw ball
         Ball->Draw(*Renderer);
     }
@@ -229,10 +253,10 @@ bool CheckCollision(GameObject &one, GameObject &two) // AABB - AABB collision
 {
     // collision x-axis?
     bool collisionX = one.Position.x + one.Size.x >= two.Position.x &&
-        two.Position.x + two.Size.x >= one.Position.x;
+                      two.Position.x + two.Size.x >= one.Position.x;
     // collision y-axis?
     bool collisionY = one.Position.y + one.Size.y >= two.Position.y &&
-        two.Position.y + two.Size.y >= one.Position.y;
+                      two.Position.y + two.Size.y >= one.Position.y;
     // collision only if on both axes
     return collisionX && collisionY;
 }
@@ -261,7 +285,8 @@ Collision CheckCollision(BallObject &one, GameObject &two) // AABB - Circle coll
 // calculates which direction a vector is facing (N,E,S or W)
 Direction VectorDirection(glm::vec2 target)
 {
-    glm::vec2 compass[] = {
+    glm::vec2 compass[] =
+    {
         glm::vec2(0.0f, 1.0f),	// up
         glm::vec2(1.0f, 0.0f),	// right
         glm::vec2(0.0f, -1.0f),	// down

@@ -333,6 +333,7 @@
 		<Unit filename="include/glm/vec3.hpp" />
 		<Unit filename="include/glm/vec4.hpp" />
 		<Unit filename="include/glm/vector_relational.hpp" />
+		<Unit filename="include/particleGenerator.h" />
 		<Unit filename="include/program.h" />
 		<Unit filename="include/resourceManager.h" />
 		<Unit filename="include/shader.h" />
@@ -350,11 +351,14 @@
 		<Unit filename="src/engine.cpp" />
 		<Unit filename="src/gameLevel.cpp" />
 		<Unit filename="src/gameObject.cpp" />
+		<Unit filename="src/particleGenerator.cpp" />
 		<Unit filename="src/program.cpp" />
 		<Unit filename="src/resourceManager.cpp" />
 		<Unit filename="src/shader.cpp" />
 		<Unit filename="src/shaders/3.3.shader.fs" />
 		<Unit filename="src/shaders/3.3.shader.vs" />
+		<Unit filename="src/shaders/breakout/particle_fragment.fs" />
+		<Unit filename="src/shaders/breakout/particle_vertex.vs" />
 		<Unit filename="src/shaders/breakout/sprite_fragment.fs" />
 		<Unit filename="src/shaders/breakout/sprite_vertex.vs" />
 		<Unit filename="src/spriteRenderer.cpp" />
