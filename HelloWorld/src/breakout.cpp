@@ -65,29 +65,25 @@ void Breakout::Init()
     ResourceManager::LoadShader(vs_sprite, fs_sprite, gs_sprite, "sprite");
     ResourceManager::LoadShader(vs_particle, fs_particle, gs_particle, "particle");
     // configure shaders
-    glm::mat4 projection = glm::ortho(0.0f, static_cast<float>(this->Width),
-                                      static_cast<float>(this->Height), 0.0f, -1.0f, 1.0f);
+    glm::mat4 projection = glm::ortho(0.0f, static_cast<float>(this->Width), static_cast<float>(this->Height), 0.0f, -1.0f, 1.0f);
     ResourceManager::GetShader("sprite").Use().SetInteger("image", 0);
     ResourceManager::GetShader("sprite").SetMatrix4("projection", projection);
     ResourceManager::GetShader("particle").Use().SetInteger("sprite", 0);
     ResourceManager::GetShader("particle").SetMatrix4("projection", projection);
 
-    // set render-specific controls
-    Shader myShader;
-    myShader = ResourceManager::GetShader("sprite");
-    Renderer = new SpriteRenderer(myShader);
-    Particles = new ParticleGenerator(ResourceManager::GetShader("particle"), ResourceManager::GetTexture("particle"), 500);
-
-
     // load textures
     ResourceManager::LoadTexture("textures/background.jpg", false, "background");
     ResourceManager::LoadTexture("textures/awesomeface.png", true, "face");
-    ResourceManager::LoadTexture("textures/ball.png", true, "ball");
     ResourceManager::LoadTexture("textures/block.png", false, "block");
     ResourceManager::LoadTexture("textures/block_solid.png", false, "block_solid");
     ResourceManager::LoadTexture("textures/paddle.png", true, "paddle");
+    ResourceManager::LoadTexture("textures/ball.png", true, "ball");
     ResourceManager::LoadTexture("textures/particle.png", true, "particle");
 
+    // set render-specific controls
+    Shader myShader = ResourceManager::GetShader("sprite");
+    Renderer = new SpriteRenderer(myShader);
+    Particles = new ParticleGenerator(ResourceManager::GetShader("particle"), ResourceManager::GetTexture("particle"), 500);
 
     //Particles = new ParticleGenerator(ResourceManager::GetShader("particle"), ResourceManager::GetTexture("particle"), 500);
     // load levels

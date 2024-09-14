@@ -6,6 +6,8 @@
 ** Creative Commons, either version 4 of the License, or (at your
 ** option) any later version.
 ******************************************************************/
+#include <iostream>
+
 #include "breakout.h"
 #include "resourceManager.h"
 #include "spriteRenderer.h"
@@ -28,14 +30,12 @@ Direction VectorDirection(glm::vec2 closest);
 
 // contructor
 Breakout::Breakout(unsigned int width, unsigned int height)
-
-Breakout::Game(unsigned int width, unsigned int height)
     : State(GAME_ACTIVE), Keys(), Width(width), Height(height)
 {
 
 }
 
-Breakout::~Game()
+Breakout::~Breakout()
 {
     delete Renderer;
     delete Player;
@@ -43,7 +43,7 @@ Breakout::~Game()
     delete Particles;
 }
 
-void Game::Init()
+void Breakout::Init()
 {
     // load shaders
     //ResourceManager::LoadShader("shaders/sprite.vs", "shaders/sprite.frag", nullptr, "sprite");
@@ -51,12 +51,12 @@ void Game::Init()
     const char *fs_sprite = "/home/joseph/Dev/codeblocks/HelloWorld/src/shaders/breakout/sprite_fragment.fs";
     const char *gs_sprite = nullptr;
 
-    const char *vs_particle = "/home/joseph/Dev/codeblocks/HelloWorld/src/shaders/particle_vertex.vs";
-    const char *fs_particle = "/home/joseph/Dev/codeblocks/HelloWorld/src/shaders/particle_fragment.frag";
+    const char *vs_particle = "/home/joseph/Dev/codeblocks/HelloWorld/src/shaders/breakout/particle_vertex.vs";
+    const char *fs_particle = "/home/joseph/Dev/codeblocks/HelloWorld/src/shaders/breakout/particle_fragment.fs";
     const char *gs_particle = nullptr;
 
-    std::cout << vs_particle << "\n";
-    std::cout << vs_particle << "\n";
+    //std::cout << vs_particle << "\n";
+    //std::cout << vs_particle << "\n";
 
     //std::cout << vs;
 
@@ -65,29 +65,27 @@ void Game::Init()
     ResourceManager::LoadShader(vs_sprite, fs_sprite, gs_sprite, "sprite");
     ResourceManager::LoadShader(vs_particle, fs_particle, gs_particle, "particle");
     // configure shaders
-    glm::mat4 projection = glm::ortho(0.0f, static_cast<float>(this->Width),
-                                      static_cast<float>(this->Height), 0.0f, -1.0f, 1.0f);
+    glm::mat4 projection = glm::ortho(0.0f, static_cast<float>(this->Width), static_cast<float>(this->Height), 0.0f, -1.0f, 1.0f);
     ResourceManager::GetShader("sprite").Use().SetInteger("image", 0);
     ResourceManager::GetShader("sprite").SetMatrix4("projection", projection);
     ResourceManager::GetShader("particle").Use().SetInteger("sprite", 0);
     ResourceManager::GetShader("particle").SetMatrix4("projection", projection);
 
-    // set render-specific controls
-    Shader myShader;
-    myShader = ResourceManager::GetShader("sprite");
-    Renderer = new SpriteRenderer(myShader);
-    Particles = new ParticleGenerator(ResourceManager::GetShader("particle"), ResourceManager::GetTexture("particle"), 500);
-
-
     // load textures
     ResourceManager::LoadTexture("textures/background.jpg", false, "background");
     ResourceManager::LoadTexture("textures/awesomeface.png", true, "face");
-    ResourceManager::LoadTexture("textures/ball.png", true, "ball");
     ResourceManager::LoadTexture("textures/block.png", false, "block");
     ResourceManager::LoadTexture("textures/block_solid.png", false, "block_solid");
     ResourceManager::LoadTexture("textures/paddle.png", true, "paddle");
+    ResourceManager::LoadTexture("textures/ball.png", true, "ball");
     ResourceManager::LoadTexture("textures/particle.png", true, "particle");
 
+    // set render-specific controls
+    Shader spriteShader ResourceManager::GetShader("sprite");;
+    shader particleShader;
+    myShader = 
+    Renderer = new SpriteRenderer(spriteShader);
+    Particles = new ParticleGenerator(ResourceManager::GetShader("particle"), ResourceManager::GetTexture("particle"), 500);
 
     //Particles = new ParticleGenerator(ResourceManager::GetShader("particle"), ResourceManager::GetTexture("particle"), 500);
     // load levels
@@ -104,14 +102,15 @@ void Game::Init()
     this->Levels.push_back(three);
     this->Levels.push_back(four);
     this->Level = 0;
-    // configure game objects
+    // configure game objects ----------------------------------------------------------------------------
+    // Player object
     glm::vec2 playerPos = glm::vec2(this->Width / 2.0f - PLAYER_SIZE.x / 2.0f, this->Height - PLAYER_SIZE.y);
     Player = new GameObject(playerPos, PLAYER_SIZE, ResourceManager::GetTexture("paddle"));
     glm::vec2 ballPos = playerPos + glm::vec2(PLAYER_SIZE.x / 2.0f - BALL_RADIUS, -BALL_RADIUS * 2.0f);
-    Ball = new BallObject(ballPos, BALL_RADIUS, INITIAL_BALL_VELOCITY, ResourceManager::GetTexture("face"));
+    Ball = new BallObject(ballPos, BALL_RADIUS, INITIAL_BALL_VELOCITY, ResourceManager::GetTexture("ball"));
 }
 
-void Game::Update(float dt)
+void Breakout::Update(float dt)
 {
     // update objects
     Ball->Move(dt, this->Width);
@@ -127,7 +126,7 @@ void Game::Update(float dt)
     }
 }
 
-void Game::ProcessInput(float dt)
+void Breakout::ProcessInput(float dt)
 {
     if (this->State == GAME_ACTIVE)
     {
@@ -156,12 +155,15 @@ void Game::ProcessInput(float dt)
     }
 }
 
-void Game::Render()
+void Breakout::Render()
 {
     if(this->State == GAME_ACTIVE)
     {
         // draw background
-        Renderer->DrawSprite(ResourceManager::GetTexture("background"), glm::vec2(0.0f, 0.0f), glm::vec2(this->Width, this->Height), 0.0f);
+        //Renderer->DrawSprite(ResourceManager::GetTexture("background"), glm::vec2(0.0f, 0.0f), glm::vec2(this->Width, this->Height), 0.0f);
+        Texture2D myTexture;
+        myTexture = ResourceManager::GetTexture("background");
+        Renderer->DrawSprite(myTexture, glm::vec2(0.0f, 0.0f), glm::vec2(this->Width, this->Height), 0.0f);
         // draw level
         this->Levels[this->Level].Draw(*Renderer);
         // draw player
@@ -174,7 +176,7 @@ void Game::Render()
 }
 
 
-void Game::ResetLevel()
+void Breakout::ResetLevel()
 {
     if (this->Level == 0)
         this->Levels[0].Load("levels/one.lvl", this->Width, this->Height / 2);
@@ -186,7 +188,7 @@ void Game::ResetLevel()
         this->Levels[3].Load("levels/four.lvl", this->Width, this->Height / 2);
 }
 
-void Game::ResetPlayer()
+void Breakout::ResetPlayer()
 {
     // reset player/ball stats
     Player->Size = PLAYER_SIZE;
@@ -199,7 +201,7 @@ bool CheckCollision(GameObject &one, GameObject &two);
 Collision CheckCollision(BallObject &one, GameObject &two);
 Direction VectorDirection(glm::vec2 closest);
 
-void Game::DoCollisions()
+void Breakout::DoCollisions()
 {
     for (GameObject &box : this->Levels[this->Level].Bricks)
     {
