@@ -67,6 +67,12 @@ public:
     // reset
     void ResetLevel();
     void ResetPlayer();
+    void LoadShaders();
+    void ConfigureShaders();
+    void LoadTextures();
+    void SetRenderSpecificControls();
+    void LoadLevels();
+    void ConfigureGameObjects();
 };
 
 #endif
