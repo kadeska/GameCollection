@@ -23,7 +23,7 @@ const unsigned int SCREEN_WIDTH = 800;
 // The height of the screen
 const unsigned int SCREEN_HEIGHT = 600;
 
-Game Breakout(SCREEN_WIDTH, SCREEN_HEIGHT);
+Breakout Breakout(SCREEN_WIDTH, SCREEN_HEIGHT);
 
 int startProgram()
 {

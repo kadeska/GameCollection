@@ -6,55 +6,102 @@
 ** Creative Commons, either version 4 of the License, or (at your
 ** option) any later version.
 ******************************************************************/
+#include <iostream>
+
 #include "breakout.h"
 #include "resourceManager.h"
 #include "spriteRenderer.h"
 #include "gameObject.h"
+#include "ballObject.h"
+#include "particleGenerator.h"
 
 // Game-related State data
-SpriteRenderer  *Renderer;
-GameObject      *Player;
+SpriteRenderer    *Renderer;
+GameObject        *Player;
+BallObject        *Ball;
+ParticleGenerator *Particles;
 
-Game::Game(unsigned int width, unsigned int height)
+// collision detection
+// -----------------------------------------------------------------------------------------------------------------
+
+bool CheckCollision(GameObject &one, GameObject &two);
+Collision CheckCollision(BallObject &one, GameObject &two);
+Direction VectorDirection(glm::vec2 closest);
+
+// contructor
+Breakout::Breakout(unsigned int width, unsigned int height)
     : State(GAME_ACTIVE), Keys(), Width(width), Height(height)
 {
 
 }
 
-Game::~Game()
+Breakout::~Breakout()
 {
     delete Renderer;
     delete Player;
+    delete Ball;
+    delete Particles;
 }
 
-void Game::Init()
+void Breakout::Init()
 {
-    // load shaders
-    //ResourceManager::LoadShader("shaders/sprite.vs", "shaders/sprite.frag", nullptr, "sprite");
-    const char *vs = "/home/joseph/Dev/codeblocks/HelloWorld/src/shaders/breakout/sprite_vertex.vs";
-    const char *fs = "/home/joseph/Dev/codeblocks/HelloWorld/src/shaders/breakout/sprite_fragment.fs";
-    const char *gs = nullptr;
+    LoadShaders();
+    ConfigureShaders();
+    LoadTextures();
+    SetRenderSpecificControls();
+    LoadLevels();
+    ConfigureGameObjects();
+
+}
+void Breakout::LoadShaders()
+{
+//ResourceManager::LoadShader("shaders/sprite.vs", "shaders/sprite.frag", nullptr, "sprite");
+    const char *vs_sprite = "/home/joseph/Dev/codeblocks/HelloWorld/src/shaders/breakout/sprite_vertex.vs";
+    const char *fs_sprite = "/home/joseph/Dev/codeblocks/HelloWorld/src/shaders/breakout/sprite_fragment.fs";
+    const char *gs_sprite = nullptr;
+
+    const char *vs_particle = "/home/joseph/Dev/codeblocks/HelloWorld/src/shaders/breakout/particle_vertex.vs";
+    const char *fs_particle = "/home/joseph/Dev/codeblocks/HelloWorld/src/shaders/breakout/particle_fragment.fs";
+    const char *gs_particle = nullptr;
+
+    //std::cout << vs_particle << "\n";
+    //std::cout << vs_particle << "\n";
 
     //std::cout << vs;
 
-    ResourceManager::LoadShader(vs, fs, gs, "sprite");
-    // configure shaders
-    glm::mat4 projection = glm::ortho(0.0f, static_cast<float>(this->Width),
-                                      static_cast<float>(this->Height), 0.0f, -1.0f, 1.0f);
+
+
+    ResourceManager::LoadShader(vs_sprite, fs_sprite, gs_sprite, "sprite");
+    ResourceManager::LoadShader(vs_particle, fs_particle, gs_particle, "particle");
+}
+void Breakout::ConfigureShaders()
+{
+    glm::mat4 projection = glm::ortho(0.0f, static_cast<float>(this->Width), static_cast<float>(this->Height), 0.0f, -1.0f, 1.0f);
     ResourceManager::GetShader("sprite").Use().SetInteger("image", 0);
     ResourceManager::GetShader("sprite").SetMatrix4("projection", projection);
-    // set render-specific controls
-    //Renderer = new SpriteRenderer(ResourceManager::GetShader("sprite"));
-    Shader myShader;
-    myShader = ResourceManager::GetShader("sprite");
-    Renderer = new SpriteRenderer(myShader);
-    // load textures
+    ResourceManager::GetShader("particle").Use().SetInteger("sprite", 0);
+    ResourceManager::GetShader("particle").SetMatrix4("projection", projection);
+}
+void Breakout::LoadTextures()
+{
     ResourceManager::LoadTexture("textures/background.jpg", false, "background");
     ResourceManager::LoadTexture("textures/awesomeface.png", true, "face");
     ResourceManager::LoadTexture("textures/block.png", false, "block");
     ResourceManager::LoadTexture("textures/block_solid.png", false, "block_solid");
     ResourceManager::LoadTexture("textures/paddle.png", true, "paddle");
-    // load levels
+    ResourceManager::LoadTexture("textures/ball.png", true, "ball");
+    ResourceManager::LoadTexture("textures/particle.png", true, "particle");
+}
+void Breakout::SetRenderSpecificControls()
+{
+    Shader myShader = ResourceManager::GetShader("sprite");
+    Renderer = new SpriteRenderer(myShader);
+    Particles = new ParticleGenerator(ResourceManager::GetShader("particle"), ResourceManager::GetTexture("particle"), 500);
+
+    //Particles = new ParticleGenerator(ResourceManager::GetShader("particle"), ResourceManager::GetTexture("particle"), 500);
+}
+void Breakout::LoadLevels()
+{
     GameLevel one;
     one.Load("levels/one.lvl", this->Width, this->Height / 2);
     GameLevel two;
@@ -68,17 +115,33 @@ void Game::Init()
     this->Levels.push_back(three);
     this->Levels.push_back(four);
     this->Level = 0;
-    // configure game objects
+}
+void Breakout::ConfigureGameObjects()
+{
     glm::vec2 playerPos = glm::vec2(this->Width / 2.0f - PLAYER_SIZE.x / 2.0f, this->Height - PLAYER_SIZE.y);
     Player = new GameObject(playerPos, PLAYER_SIZE, ResourceManager::GetTexture("paddle"));
+    glm::vec2 ballPos = playerPos + glm::vec2(PLAYER_SIZE.x / 2.0f - BALL_RADIUS, -BALL_RADIUS * 2.0f);
+    Ball = new BallObject(ballPos, BALL_RADIUS, INITIAL_BALL_VELOCITY, ResourceManager::GetTexture("ball"));
 }
 
-void Game::Update(float dt)
+void Breakout::Update(float dt)
 {
-
+    // update objects
+    Ball->Move(dt, this->Width);
+    // check for collisions
+    this->DoCollisions();
+    // update particles
+    Particles->Update(dt, *Ball, 2, glm::vec2(Ball->Radius / 2.0f));
+    // check loss condition
+    if (Ball->Position.y >= this->Height) // did ball reach bottom edge?
+    {
+    // Save score and depleate lives
+        this->ResetLevel();
+        this->ResetPlayer();
+    }
 }
 
-void Game::ProcessInput(float dt)
+void Breakout::ProcessInput(float dt)
 {
     if (this->State == GAME_ACTIVE)
     {
@@ -87,17 +150,27 @@ void Game::ProcessInput(float dt)
         if (this->Keys[GLFW_KEY_A])
         {
             if (Player->Position.x >= 0.0f)
+            {
                 Player->Position.x -= velocity;
+                if (Ball->Stuck)
+                    Ball->Position.x -= velocity;
+            }
         }
         if (this->Keys[GLFW_KEY_D])
         {
             if (Player->Position.x <= this->Width - Player->Size.x)
+            {
                 Player->Position.x += velocity;
+                if (Ball->Stuck)
+                    Ball->Position.x += velocity;
+            }
         }
+        if (this->Keys[GLFW_KEY_SPACE])
+            Ball->Stuck = false;
     }
 }
 
-void Game::Render()
+void Breakout::Render()
 {
     if(this->State == GAME_ACTIVE)
     {
@@ -110,6 +183,150 @@ void Game::Render()
         this->Levels[this->Level].Draw(*Renderer);
         // draw player
         Player->Draw(*Renderer);
+        // draw particles
+        Particles->Draw();
+        // draw ball
+        Ball->Draw(*Renderer);
     }
+}
+
+
+void Breakout::ResetLevel()
+{
+    if (this->Level == 0)
+        this->Levels[0].Load("levels/one.lvl", this->Width, this->Height / 2);
+    else if (this->Level == 1)
+        this->Levels[1].Load("levels/two.lvl", this->Width, this->Height / 2);
+    else if (this->Level == 2)
+        this->Levels[2].Load("levels/three.lvl", this->Width, this->Height / 2);
+    else if (this->Level == 3)
+        this->Levels[3].Load("levels/four.lvl", this->Width, this->Height / 2);
+}
+
+void Breakout::ResetPlayer()
+{
+    // reset player/ball stats
+    Player->Size = PLAYER_SIZE;
+    Player->Position = glm::vec2(this->Width / 2.0f - PLAYER_SIZE.x / 2.0f, this->Height - PLAYER_SIZE.y);
+    Ball->Reset(Player->Position + glm::vec2(PLAYER_SIZE.x / 2.0f - BALL_RADIUS, -(BALL_RADIUS * 2.0f)), INITIAL_BALL_VELOCITY);
+}
+
+// collision detection
+bool CheckCollision(GameObject &one, GameObject &two);
+Collision CheckCollision(BallObject &one, GameObject &two);
+Direction VectorDirection(glm::vec2 closest);
+
+void Breakout::DoCollisions()
+{
+    for (GameObject &box : this->Levels[this->Level].Bricks)
+    {
+        if (!box.Destroyed)
+        {
+            Collision collision = CheckCollision(*Ball, box);
+            if (std::get<0>(collision)) // if collision is true
+            {
+                // destroy block if not solid
+                if (!box.IsSolid)
+                    box.Destroyed = true;
+                // collision resolution
+                Direction dir = std::get<1>(collision);
+                glm::vec2 diff_vector = std::get<2>(collision);
+                if (dir == LEFT || dir == RIGHT) // horizontal collision
+                {
+                    Ball->Velocity.x = -Ball->Velocity.x; // reverse horizontal velocity
+                    // relocate
+                    float penetration = Ball->Radius - std::abs(diff_vector.x);
+                    if (dir == LEFT)
+                        Ball->Position.x += penetration; // move ball to right
+                    else
+                        Ball->Position.x -= penetration; // move ball to left;
+                }
+                else // vertical collision
+                {
+                    Ball->Velocity.y = -Ball->Velocity.y; // reverse vertical velocity
+                    // relocate
+                    float penetration = Ball->Radius - std::abs(diff_vector.y);
+                    if (dir == UP)
+                        Ball->Position.y -= penetration; // move ball bback up
+                    else
+                        Ball->Position.y += penetration; // move ball back down
+                }
+            }
+        }
+    }
+    // check collisions for player pad (unless stuck)
+    Collision result = CheckCollision(*Ball, *Player);
+    if (!Ball->Stuck && std::get<0>(result))
+    {
+        // check where it hit the board, and change velocity based on where it hit the board
+        float centerBoard = Player->Position.x + Player->Size.x / 2.0f;
+        float distance = (Ball->Position.x + Ball->Radius) - centerBoard;
+        float percentage = distance / (Player->Size.x / 2.0f);
+        // then move accordingly
+        float strength = 2.0f;
+        glm::vec2 oldVelocity = Ball->Velocity;
+        Ball->Velocity.x = INITIAL_BALL_VELOCITY.x * percentage * strength;
+        //Ball->Velocity.y = -Ball->Velocity.y;
+        Ball->Velocity = glm::normalize(Ball->Velocity) * glm::length(oldVelocity); // keep speed consistent over both axes (multiply by length of old velocity, so total strength is not changed)
+        // fix sticky paddle
+        Ball->Velocity.y = -1.0f * abs(Ball->Velocity.y);
+    }
+}
+
+bool CheckCollision(GameObject &one, GameObject &two) // AABB - AABB collision
+{
+    // collision x-axis?
+    bool collisionX = one.Position.x + one.Size.x >= two.Position.x &&
+                      two.Position.x + two.Size.x >= one.Position.x;
+    // collision y-axis?
+    bool collisionY = one.Position.y + one.Size.y >= two.Position.y &&
+                      two.Position.y + two.Size.y >= one.Position.y;
+    // collision only if on both axes
+    return collisionX && collisionY;
+}
+
+Collision CheckCollision(BallObject &one, GameObject &two) // AABB - Circle collision
+{
+    // get center point circle first
+    glm::vec2 center(one.Position + one.Radius);
+    // calculate AABB info (center, half-extents)
+    glm::vec2 aabb_half_extents(two.Size.x / 2.0f, two.Size.y / 2.0f);
+    glm::vec2 aabb_center(two.Position.x + aabb_half_extents.x, two.Position.y + aabb_half_extents.y);
+    // get difference vector between both centers
+    glm::vec2 difference = center - aabb_center;
+    glm::vec2 clamped = glm::clamp(difference, -aabb_half_extents, aabb_half_extents);
+    // now that we know the clamped values, add this to AABB_center and we get the value of box closest to circle
+    glm::vec2 closest = aabb_center + clamped;
+    // now retrieve vector between center circle and closest point AABB and check if length < radius
+    difference = closest - center;
+
+    if (glm::length(difference) < one.Radius) // not <= since in that case a collision also occurs when object one exactly touches object two, which they are at the end of each collision resolution stage.
+        return std::make_tuple(true, VectorDirection(difference), difference);
+    else
+        return std::make_tuple(false, UP, glm::vec2(0.0f, 0.0f));
+}
+
+// calculates which direction a vector is facing (N,E,S or W)
+Direction VectorDirection(glm::vec2 target)
+{
+    glm::vec2 compass[] =
+    {
+        glm::vec2(0.0f, 1.0f),	// up
+        glm::vec2(1.0f, 0.0f),	// right
+        glm::vec2(0.0f, -1.0f),	// down
+        glm::vec2(-1.0f, 0.0f)	// left
+    };
+    float max = 0.0f;
+    unsigned int best_match = -1;
+    for (unsigned int i = 0; i < 4; i++)
+    {
+        float dot_product = glm::dot(glm::normalize(target), compass[i]);
+        if (dot_product > max)
+        {
+            max = dot_product;
+            best_match = i;
+        }
+    }
+    return (Direction)best_match;
 }
 
