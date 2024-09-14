@@ -1,10 +1,6 @@
 ###### master
 # Welcome
 
-* This branch is intended for pushing a release build of the program from the 'Main' branch. *Do not* push from 'Developmental' to 'Release' branch, as the 'Developmental' branch contains debug code and is not optimized for release. The 'Developmental' branch is littered with lots of comments and/or other non-essential code meant for debugging/testing inside the dev environment. 
-
-* This branch may contain additional optimizations made after pushing the initial code meant for release. (I will push code from 'Master' into 'Release' then make appropriate edits for optimization needs. 
-
 * My goal is to create a 2D game. I want my game to end up as a representation of my favorite style of video game, an open world RPG. I'd like to have concepts from MineCraft such as; blocks, crafting, and open world. With my own twist on things. And concepts from World of Warcraft such as; quests, and an upgrade tree.
 
 * The following is a list of games that I made, or still working on. 
