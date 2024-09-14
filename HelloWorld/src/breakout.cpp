@@ -135,6 +135,7 @@ void Breakout::Update(float dt)
     // check loss condition
     if (Ball->Position.y >= this->Height) // did ball reach bottom edge?
     {
+    // Save score and depleate lives
         this->ResetLevel();
         this->ResetPlayer();
     }

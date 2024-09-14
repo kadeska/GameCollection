@@ -45,24 +45,11 @@ Breakout::~Breakout()
 
 void Breakout::Init()
 {
-    // load shaders
     LoadShaders();
-
-    // configure shaders
     ConfigureShaders();
-
-
-    // load textures
     LoadTextures();
-
-
-    // set render-specific controls
     SetRenderSpecificControls();
-
-    // load levels
     LoadLevels();
-
-    // configure game objects ----------------------------------------------------------------------------
     ConfigureGameObjects();
 
 }
@@ -148,6 +135,7 @@ void Breakout::Update(float dt)
     // check loss condition
     if (Ball->Position.y >= this->Height) // did ball reach bottom edge?
     {
+    // Save score 
         this->ResetLevel();
         this->ResetPlayer();
     }
