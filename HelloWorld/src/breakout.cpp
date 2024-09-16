@@ -126,6 +126,9 @@ void Breakout::ConfigureGameObjects()
 
 void Breakout::Update(float dt)
 {
+    // Check if level is cleared first 
+    // IsCompleted()  bool GameLevel::IsCompleted()
+    //
     // update objects
     Ball->Move(dt, this->Width);
     // check for collisions
