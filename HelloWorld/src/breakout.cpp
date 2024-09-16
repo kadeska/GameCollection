@@ -70,7 +70,7 @@ void Breakout::LoadShaders()
 
     //std::cout << vs;
 
-
+    // The above code could be moved into a helper class or some sort of data management class
 
     ResourceManager::LoadShader(vs_sprite, fs_sprite, gs_sprite, "sprite");
     ResourceManager::LoadShader(vs_particle, fs_particle, gs_particle, "particle");
