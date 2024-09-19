@@ -14,11 +14,11 @@
 #include "gameObject.h"
 #include "ballObject.h"
 #include "particleGenerator.h"
-//#include "gameLevel.h"
+#include "gameLevel.h"
 
 // Game-related State data
 SpriteRenderer    *Renderer;
-GameObject        *Player;
+GameObject        *Player; // Make player object its own seperate oject instead of a GameObject.
 BallObject        *Ball;
 ParticleGenerator *Particles;
 
@@ -54,7 +54,7 @@ void Breakout::Init()
     ConfigureGameObjects();
 
 }
-void Breakout::LoadShaders()
+void Breakout::LoadShaders()  // Fix this so file directories are not hard-coded
 {
 //ResourceManager::LoadShader("shaders/sprite.vs", "shaders/sprite.frag", nullptr, "sprite");
     const char *vs_sprite = "/home/joseph/Dev/codeblocks/HelloWorld/src/shaders/breakout/sprite_vertex.vs";
@@ -102,6 +102,8 @@ void Breakout::SetRenderSpecificControls()
     //Particles = new ParticleGenerator(ResourceManager::GetShader("particle"), ResourceManager::GetTexture("particle"), 500);
 }
 void Breakout::LoadLevels()
+// Move levels into its own loader class and use a hashmap or some array for storing the levels.
+// Use the levels class to load and save levels and for anything else related to levels.
 {
     GameLevel one;
     one.Load("levels/one.lvl", this->Width, this->Height / 2);
@@ -127,8 +129,15 @@ void Breakout::ConfigureGameObjects()
 
 void Breakout::Update(float dt)
 {
-    // Check if level is cleared first 
-    // IsCompleted()  bool GameLevel::IsCompleted()
+    // Check if level is cleared first
+    if(this->Levels[Level].IsCompleted()) // if Level is completed
+    {
+        std::cout << "Level completed: " << Level << "\n";
+        //save gamestate
+        // saveState();
+        //set next level
+        ++Level; //Check if its the last level, if so then change gamestate to GAME_WIN
+    }
     //
     // update objects
     Ball->Move(dt, this->Width);
