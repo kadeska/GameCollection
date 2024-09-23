@@ -333,6 +333,7 @@
 		<Unit filename="include/glm/vec3.hpp" />
 		<Unit filename="include/glm/vec4.hpp" />
 		<Unit filename="include/glm/vector_relational.hpp" />
+		<Unit filename="include/helper.h" />
 		<Unit filename="include/particleGenerator.h" />
 		<Unit filename="include/program.h" />
 		<Unit filename="include/resourceManager.h" />

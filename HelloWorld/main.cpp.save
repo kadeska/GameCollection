@@ -7,10 +7,9 @@
 
 //using namespace std;
 
-
-// Master -- v0.
+// Release -- v0.2.2 alpha
 //--------------------------------------function declaraions
-float work();
+float run();
 float algorithm_A(int input);
 void test();
 int parsToInt(std::string str);
@@ -23,82 +22,80 @@ int main()
 {
     std::cout << "Hello world!" << '\n';
     //while(loop){work();}; I'd like to re-work the work() function so it is reader friendly and optimized. And should I move the while() loop into this scope or keep it inside the scope of the work() function?
-    work();
+    run();
     return 0;
 }
 
-//rename to something better
-//work() returns an int based on the given input
-float work()
+float run()
 {
-    float y;
-    int i;
+    float result;
 
     while(loop) // re-work this to be optimized and reader friendly. Having multiple if statements is not ideal.
     {
-        std::string str;
-        std::cout << "Please enter a number 0 through 9" << '\n';
-        std::cin >> str;
-        std::cout << str << '\n';
-        i = parsToInt(str);
+        std::string input;
+        std::cout << "Please enter a number 0 through 9, or a command: " << '\n';
+        std::cin >> input;
+        //std::cout << str << '\n';
 
-        if (str == "exit" || str == "stop" || str == "abort")
+        if (input == "exit" || input == "stop" || input == "abort")
         {
             return 0;
         }
-        if (str == "test")
+        else if (input == "test")
         {
             test();
+            continue;
         }
-        if (str == "engine")
+        else if (input == "engine")
         {
             std::cout << "Starting Engine... \n";
             create_Window();
+            continue;
         }
-        if (str == "breakout")
+        else if (input == "breakout")
         {
             std::cout << "Breakout Game!...\n";
             startProgram();
-            return 0;
-            // maybe break out of loop after program ends. This might fix the segmentation fault.
+            continue;
         }
 
+        int number = parsToInt(input);
         // this is nothing special, just ignore this.
-        if (i >= 0 && i <= 9)
+        if (number >= 0 && number <= 9)
         {
-            std::cout << "You entered: " << i << '\n';
-            std::cout << "OUTPUT:  " << (y = algorithm_A(i)) << '\n';
+            std::cout << "You entered: " << number << '\n';
+            result = algorithm_A(number);
+            std::cout << "OUTPUT:  " << result << '\n';
         }
         else
         {
             std::cout << "ERROR! - Please enter a number 0 through 9" << '\n';
         }
-
     }
-
-
-    return y;
+    return result;
 }
 
 //algorithmA takes an input and returns some int output after some manipulation.
 // Planning to learn about algorithms later.
 float algorithm_A(int input)
 {
-    float x = (input * 1.0);
+    float x = static_cast()
     x += (x * (x/2));
     //cout << x << endl;
     return x;
 }
 
-int parsToInt(std::string str)
+// Parse string to int
+int parsToInt(const std::string& str)
 {
     try
     {
-        int i = std::stoi(str);
+        return std::stoi(str);
     }
     catch(std::exception e)
     {
-        //std::cout << "WARNING: An exception has been cought." << '\n';
+        std::cout << "WARNING: An exception has been cought." << '\n';
+        return -1;
     }
 }
 
