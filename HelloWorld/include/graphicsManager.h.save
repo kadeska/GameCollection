@@ -1,0 +1,33 @@
+#ifndef GRAPHICSMANAGER_H
+#define GRAPHICSMANAGER_H
+
+#include "helper.h"
+#include "resourceManager.h"
+#include "breakout.h"
+
+class GraphicsManager
+{
+public:
+    GraphicsManager(); // Constructor
+
+    void init(float width, int height);
+    void LoadShaders();
+    void ConfigureShaders();
+    void LoadTextures();
+    void SetRenderSpecificControls();
+
+
+    Helper helper;
+    // Variables
+    unsigned int width, height;
+    //Breakout game;
+    const char* sprite_vs_dir;
+
+
+protected:
+
+private:
+    const char* vs_sprite;
+};
+
+#endif // GRAPHICSMANAGER_H

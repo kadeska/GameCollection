@@ -11,6 +11,7 @@
 
 #include "breakout.h"
 #include "resourceManager.h"
+#include "graphicsManager.h"
 
 #include <iostream>
 
@@ -87,6 +88,7 @@ int startProgram()
         glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
         glClear(GL_COLOR_BUFFER_BIT);
         Breakout.Render();
+        //g.Render();
 
         glfwSwapBuffers(window);
     }

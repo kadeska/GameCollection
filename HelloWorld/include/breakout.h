@@ -11,10 +11,17 @@
 #ifndef BREAKOUT_H
 #define BREAKOUT_H
 
+#include <iostream>
+#include <filesystem>
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
 
 #include "gameLevel.h"
+#include "resourceManager.h"
+#include "gameObject.h"
+#include "ballObject.h"
+#include "graphicsManager.h"
+
 
 // Represents the current state of the game
 enum GameState {
@@ -42,6 +49,9 @@ const glm::vec2 INITIAL_BALL_VELOCITY(100.0f, -350.0f);
 // Radius of the ball object
 const float BALL_RADIUS = 12.5f;
 
+// Graphic manager.
+//GraphicsManager gfcMan;
+
 // Game holds all game-related state and functionality.
 // Combines all game-related data into a single class for
 // easy access to each of the components and manageability.
@@ -54,6 +64,8 @@ public:
     unsigned int            Width, Height;
     std::vector<GameLevel>  Levels;
     unsigned int            Level;
+    GameObject        *Player; // Make player object its own seperate oject instead of a GameObject.
+    BallObject        *Ball;
     // constructor/destructor
     Breakout(unsigned int width, unsigned int height);
     ~Breakout();
@@ -63,14 +75,11 @@ public:
     void ProcessInput(float dt);
     void Update(float dt);
     void Render();
+
     void DoCollisions();
     // reset
     void ResetLevel();
     void ResetPlayer();
-    void LoadShaders();
-    void ConfigureShaders();
-    void LoadTextures();
-    void SetRenderSpecificControls();
     void LoadLevels();
     void ConfigureGameObjects();
 };

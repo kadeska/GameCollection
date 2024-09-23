@@ -11,6 +11,7 @@
 
 #include "breakout.h"
 #include "resourceManager.h"
+#include "graphicsManager.h"
 
 #include <iostream>
 
@@ -23,9 +24,9 @@ const unsigned int SCREEN_WIDTH = 800;
 // The height of the screen
 const unsigned int SCREEN_HEIGHT = 600;
 
-Game Breakout(SCREEN_WIDTH, SCREEN_HEIGHT);
+Breakout Breakout(SCREEN_WIDTH, SCREEN_HEIGHT);
 
-int pr(int argc, char *argv[])
+int startProgram()
 {
     glfwInit();
     glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
@@ -86,7 +87,8 @@ int pr(int argc, char *argv[])
         // ------
         glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
         glClear(GL_COLOR_BUFFER_BIT);
-        Breakout.Render();
+        //Breakout.Render();
+        g.Render();
 
         glfwSwapBuffers(window);
     }

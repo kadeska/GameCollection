@@ -3,47 +3,15 @@
 
 #include <iostream>
 #include <cstring>
+#include <filesystem>
 
-class RenderHelper
+
+
+class Helper
 {
 public:
 
-    std::string currentDir = std::filesystem::current_path().string();
-
-    const char* vs_sprite = "/src/shaders/breakout/sprite_vertex.vs";
-    const char* sprite_vs_dir = combineStrings(currentDir.c_str(), vs_sprite); // currentDir.data() + vs_sprite;
-
-// Render help functions
-//
-
-    void LoadShaders()
-    {
-
-
-//ResourceManager::LoadShader("shaders/sprite.vs", "shaders/sprite.frag", nullptr, "sprite");
-
-        const char *vs_sprite = helper.sprite_vs_dir;
-        const char *fs_sprite = "/home/joseph/Dev/codeblocks/HelloWorld/src/shaders/breakout/sprite_fragment.fs";
-        const char *gs_sprite = nullptr;
-
-        const char *vs_particle = "/home/joseph/Dev/codeblocks/HelloWorld/src/shaders/breakout/particle_vertex.vs";
-        const char *fs_particle = "/home/joseph/Dev/codeblocks/HelloWorld/src/shaders/breakout/particle_fragment.fs";
-        const char *gs_particle = nullptr;
-
-        //std::cout << vs_particle << "\n";
-        //std::cout << vs_particle << "\n";
-
-        //std::cout << vs;
-
-        // The above code could be moved into a helper class or some sort of data management class
-
-        ResourceManager::LoadShader(vs_sprite, fs_sprite, gs_sprite, "sprite");
-        ResourceManager::LoadShader(vs_particle, fs_particle, gs_particle, "particle");
-    }
-    void ConfigureShaders() {}
-    void LoadTextures() {}
-    void SetRenderSpecificControls() {}
-
+    
 
 // Combine two const char* strings and return char*
 // Dont forget to free memory after using this function by calling delete[] 'combinedString'

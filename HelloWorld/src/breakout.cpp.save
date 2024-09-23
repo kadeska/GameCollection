@@ -6,24 +6,10 @@
 ** Creative Commons, either version 4 of the License, or (at your
 ** option) any later version.
 ******************************************************************/
-#include <iostream>
-#include <filesystem>
-
 #include "breakout.h"
-#include "resourceManager.h"
-#include "spriteRenderer.h"
-#include "gameObject.h"
-#include "ballObject.h"
-#include "particleGenerator.h"
-#include "gameLevel.h"
-#include "helper.h"
 
-// Game-related State data
-SpriteRenderer    *Renderer;
-GameObject        *Player; // Make player object its own seperate oject instead of a GameObject.
-BallObject        *Ball;
-ParticleGenerator *Particles;
-RenderHelper helper;
+GraphicsManager gfcMan;
+
 // collision detection
 // -----------------------------------------------------------------------------------------------------------------
 
@@ -40,53 +26,33 @@ Breakout::Breakout(unsigned int width, unsigned int height)
 
 Breakout::~Breakout()
 {
-    delete Particles;
-    delete Ball;
+    delete gfcMan.Particles;
+    delete Breakout::Ball;
     delete Player;
     //delete Renderer;  //Commenting this out fixed the segmentation fault that happens during application termination.
 }
 
 void Breakout::Init()
 {
-// RenderHelper
-    helper.LoadShaders();
-    helper.ConfigureShaders();
-    helper.LoadTextures();
-    helper.SetRenderSpecificControls();
+// GraphicsManager
+    //gfcMan.GraphicsManager();
+    gfcMan.LoadShaders();
+    gfcMan.ConfigureShaders();
+    gfcMan.LoadTextures();
+    gfcMan.SetRenderSpecificControls();
 
 // LevelManager
     LoadLevels();
     ConfigureGameObjects();
 
 }
-void Breakout::LoadShaders()  // Fix this so file directories are not hard-coded
-{
-}
-void Breakout::ConfigureShaders()
-{
-    glm::mat4 projection = glm::ortho(0.0f, static_cast<float>(this->Width), static_cast<float>(this->Height), 0.0f, -1.0f, 1.0f);
-    ResourceManager::GetShader("sprite").Use().SetInteger("image", 0);
-    ResourceManager::GetShader("sprite").SetMatrix4("projection", projection);
-    ResourceManager::GetShader("particle").Use().SetInteger("sprite", 0);
-    ResourceManager::GetShader("particle").SetMatrix4("projection", projection);
-}
-void Breakout::LoadTextures()
-{
-    ResourceManager::LoadTexture("textures/background.jpg", false, "background");
-    ResourceManager::LoadTexture("textures/awesomeface.png", true, "face");
-    ResourceManager::LoadTexture("textures/block.png", false, "block");
-    ResourceManager::LoadTexture("textures/block_solid.png", false, "block_solid");
-    ResourceManager::LoadTexture("textures/paddle.png", true, "paddle");
-    ResourceManager::LoadTexture("textures/ball.png", true, "ball");
-    ResourceManager::LoadTexture("textures/particle.png", true, "particle");
-}
-void Breakout::SetRenderSpecificControls()
-{
-    Shader myShader = ResourceManager::GetShader("sprite");
-    Renderer = new SpriteRenderer(myShader);
-    Particles = new ParticleGenerator(ResourceManager::GetShader("particle"), ResourceManager::GetTexture("particle"), 500);
 
-    //Particles = new ParticleGenerator(ResourceManager::GetShader("particle"), ResourceManager::GetTexture("particle"), 500);
+void Breakout::Render()
+{
+    if(State == GAME_ACTIVE)
+    {
+        gfcMan.Render();
+    }
 }
 void Breakout::LoadLevels()
 // Move levels into its own loader class and use a hashmap or some array for storing the levels.
@@ -107,7 +73,7 @@ void Breakout::LoadLevels()
     this->Level = 0;
 }
 void Breakout::ConfigureGameObjects()
-{
+{ // Could I load these into an array instead of loading on the stack like this? Is there a better way of doing this?
     glm::vec2 playerPos = glm::vec2(this->Width / 2.0f - PLAYER_SIZE.x / 2.0f, this->Height - PLAYER_SIZE.y);
     Player = new GameObject(playerPos, PLAYER_SIZE, ResourceManager::GetTexture("paddle"));
     glm::vec2 ballPos = playerPos + glm::vec2(PLAYER_SIZE.x / 2.0f - BALL_RADIUS, -BALL_RADIUS * 2.0f);
@@ -117,7 +83,8 @@ void Breakout::ConfigureGameObjects()
 void Breakout::Update(float dt)
 {
     // Check if level is cleared first
-    if(this->Levels[Level].IsCompleted()) // if Level is completed
+    if(this->Levels[Level].IsCompleted()) // if Level is completed.
+    //This could be moved to a level update function inside of the level class.
     {
         std::cout << "Level completed: " << Level << "\n";
         //save gamestate
@@ -131,7 +98,7 @@ void Breakout::Update(float dt)
     // check for collisions
     this->DoCollisions();
     // update particles
-    Particles->Update(dt, *Ball, 2, glm::vec2(Ball->Radius / 2.0f));
+    gfcMan.Particles->Update(dt, *Ball, 2, glm::vec2(Ball->Radius / 2.0f));
     // check loss condition
     if (Ball->Position.y >= this->Height) // did ball reach bottom edge?
     {
@@ -170,25 +137,7 @@ void Breakout::ProcessInput(float dt)
     }
 }
 
-void Breakout::Render()
-{
-    if(this->State == GAME_ACTIVE)
-    {
-        // draw background
-        //Renderer->DrawSprite(ResourceManager::GetTexture("background"), glm::vec2(0.0f, 0.0f), glm::vec2(this->Width, this->Height), 0.0f);
-        Texture2D myTexture;
-        myTexture = ResourceManager::GetTexture("background");
-        Renderer->DrawSprite(myTexture, glm::vec2(0.0f, 0.0f), glm::vec2(this->Width, this->Height), 0.0f);
-        // draw level
-        this->Levels[this->Level].Draw(*Renderer);
-        // draw player
-        Player->Draw(*Renderer);
-        // draw particles
-        Particles->Draw();
-        // draw ball
-        Ball->Draw(*Renderer);
-    }
-}
+
 
 
 void Breakout::ResetLevel()
