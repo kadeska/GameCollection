@@ -7,6 +7,7 @@
 ** option) any later version.
 ******************************************************************/
 #include <iostream>
+#include <filesystem>
 
 #include "breakout.h"
 #include "resourceManager.h"
@@ -15,13 +16,14 @@
 #include "ballObject.h"
 #include "particleGenerator.h"
 #include "gameLevel.h"
+#include "helper.h"
 
 // Game-related State data
 SpriteRenderer    *Renderer;
 GameObject        *Player; // Make player object its own seperate oject instead of a GameObject.
 BallObject        *Ball;
 ParticleGenerator *Particles;
-
+RenderHelper helper;
 // collision detection
 // -----------------------------------------------------------------------------------------------------------------
 
@@ -38,42 +40,27 @@ Breakout::Breakout(unsigned int width, unsigned int height)
 
 Breakout::~Breakout()
 {
-    delete Renderer;
-    delete Player;
-    delete Ball;
     delete Particles;
+    delete Ball;
+    delete Player;
+    //delete Renderer;  //Commenting this out fixed the segmentation fault that happens during application termination.
 }
 
 void Breakout::Init()
 {
-    LoadShaders();
-    ConfigureShaders();
-    LoadTextures();
-    SetRenderSpecificControls();
+// RenderHelper
+    helper.LoadShaders();
+    helper.ConfigureShaders();
+    helper.LoadTextures();
+    helper.SetRenderSpecificControls();
+
+// LevelManager
     LoadLevels();
     ConfigureGameObjects();
 
 }
 void Breakout::LoadShaders()  // Fix this so file directories are not hard-coded
 {
-//ResourceManager::LoadShader("shaders/sprite.vs", "shaders/sprite.frag", nullptr, "sprite");
-    const char *vs_sprite = "/home/joseph/Dev/codeblocks/HelloWorld/src/shaders/breakout/sprite_vertex.vs";
-    const char *fs_sprite = "/home/joseph/Dev/codeblocks/HelloWorld/src/shaders/breakout/sprite_fragment.fs";
-    const char *gs_sprite = nullptr;
-
-    const char *vs_particle = "/home/joseph/Dev/codeblocks/HelloWorld/src/shaders/breakout/particle_vertex.vs";
-    const char *fs_particle = "/home/joseph/Dev/codeblocks/HelloWorld/src/shaders/breakout/particle_fragment.fs";
-    const char *gs_particle = nullptr;
-
-    //std::cout << vs_particle << "\n";
-    //std::cout << vs_particle << "\n";
-
-    //std::cout << vs;
-
-    // The above code could be moved into a helper class or some sort of data management class
-
-    ResourceManager::LoadShader(vs_sprite, fs_sprite, gs_sprite, "sprite");
-    ResourceManager::LoadShader(vs_particle, fs_particle, gs_particle, "particle");
 }
 void Breakout::ConfigureShaders()
 {
