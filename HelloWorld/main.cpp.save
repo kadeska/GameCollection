@@ -3,7 +3,7 @@
 #include <string>
 #include <engine.h>
 
-#include "program.h"
+#include "breakoutGame.h"
 
 //using namespace std;
 
@@ -55,7 +55,7 @@ float run()
         else if (input == "breakout")
         {
             std::cout << "Breakout Game!...\n";
-            startProgram();
+            startGame();
             continue;
         }
 
@@ -79,14 +79,14 @@ float run()
 // Planning to learn about algorithms later.
 float algorithm_A(int input)
 {
-    float x = static_cast()
+    float x = static_cast<float>(input);
     x += (x * (x/2));
     //cout << x << endl;
     return x;
 }
 
 // Parse string to int
-int parsToInt(const std::string& str)
+int parsToInt(std::string str)
 {
     try
     {

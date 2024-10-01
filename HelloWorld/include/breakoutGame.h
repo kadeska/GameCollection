@@ -1,5 +1,3 @@
-
-
 /*******************************************************************
 ** This code is part of Breakout.
 **
@@ -8,14 +6,19 @@
 ** Creative Commons, either version 4 of the License, or (at your
 ** option) any later version.
 ******************************************************************/
-#ifndef BREAKOUT_H
-#define BREAKOUT_H
+/**
+** This is where the breakout game begins. Breakout contains all core
+** game related state and functionality.
+**/
+#ifndef BREAKOUT_GAME_H
+#define BREAKOUT_GAME_H
 
 #include <iostream>
 #include <filesystem>
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
 
+//#include "core.h"
 #include "gameLevel.h"
 #include "resourceManager.h"
 #include "gameObject.h"
@@ -55,20 +58,21 @@ const float BALL_RADIUS = 12.5f;
 // Game holds all game-related state and functionality.
 // Combines all game-related data into a single class for
 // easy access to each of the components and manageability.
-class Breakout
+class BreakoutGame
 {
 public:
+    BreakoutGame();
     // game state
     GameState               State;
     bool                    Keys[1024];
     unsigned int            Width, Height;
-    std::vector<GameLevel>  Levels;
-    unsigned int            Level;
+    std::vector<GameLevel>  Levels; // Array of levels
+    unsigned int            Level; // What Level are we on
     GameObject        *Player; // Make player object its own seperate oject instead of a GameObject.
     BallObject        *Ball;
     // constructor/destructor
-    Breakout(unsigned int width, unsigned int height);
-    ~Breakout();
+    BreakoutGame(unsigned int width, unsigned int height);
+    ~BreakoutGame();
     // initialize game state (load all shaders/textures/levels)
     void Init();
     // game loop

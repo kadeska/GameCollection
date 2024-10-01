@@ -40,7 +40,8 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="include/ballObject.h" />
-		<Unit filename="include/breakout.h" />
+		<Unit filename="include/breakoutGame.h" />
+		<Unit filename="include/core.h" />
 		<Unit filename="include/engine.h" />
 		<Unit filename="include/gameLevel.h" />
 		<Unit filename="include/gameObject.h" />
@@ -336,7 +337,6 @@
 		<Unit filename="include/graphicsManager.h" />
 		<Unit filename="include/helper.h" />
 		<Unit filename="include/particleGenerator.h" />
-		<Unit filename="include/program.h" />
 		<Unit filename="include/resourceManager.h" />
 		<Unit filename="include/shader.h" />
 		<Unit filename="include/shaderHelper.h" />
@@ -349,13 +349,13 @@
 		<Unit filename="levels/two.lvl" />
 		<Unit filename="main.cpp" />
 		<Unit filename="src/ballObject.cpp" />
-		<Unit filename="src/breakout.cpp" />
+		<Unit filename="src/breakoutGame.cpp" />
+		<Unit filename="src/core.cpp" />
 		<Unit filename="src/engine.cpp" />
 		<Unit filename="src/gameLevel.cpp" />
 		<Unit filename="src/gameObject.cpp" />
 		<Unit filename="src/graphicsManager.cpp" />
 		<Unit filename="src/particleGenerator.cpp" />
-		<Unit filename="src/program.cpp" />
 		<Unit filename="src/resourceManager.cpp" />
 		<Unit filename="src/shader.cpp" />
 		<Unit filename="src/shaders/3.3.shader.fs" />

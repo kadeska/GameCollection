@@ -1,25 +1,42 @@
+/**
+** Graphics manager manages all graphics relted things,
+shaders and textures. Contains references to texture
+image paths and shader paths.
+**
+**
+**/
+
 #ifndef GRAPHICSMANAGER_H
 #define GRAPHICSMANAGER_H
 
+#include "cor"
 #include "helper.h"
 #include "resourceManager.h"
-#include "breakout.h"
+#include "breakoutGame.h"
+#include "spriteRenderer.h"
+#include "particleGenerator.h"
 
 class GraphicsManager
 {
 public:
     GraphicsManager(); // Constructor
 
-    void init(float width, int height);
+    void init(float width, float height);
     void LoadShaders();
     void ConfigureShaders();
     void LoadTextures();
     void SetRenderSpecificControls();
+    void Render();
 
 
+    //Breakout game;
+    //Breakout *game;
     Helper helper;
+    SpriteRenderer    *Renderer;
+    ParticleGenerator *Particles;
+
     // Variables
-    unsigned int width, height;
+    unsigned int width = 0, height = 0;
     //Breakout game;
     const char* sprite_vs_dir;
 

@@ -1,6 +1,6 @@
 #include "graphicsManager.h"
-//#include "breakout.h"
-
+//#include "breakoutGame.h"
+#include "core.h"
 GraphicsManager::GraphicsManager()
 {
     //ctor
@@ -74,11 +74,11 @@ void GraphicsManager::Render()
     myTexture = ResourceManager::GetTexture("background");
     Renderer->DrawSprite(myTexture, glm::vec2(0.0f, 0.0f), glm::vec2(width, height), 0.0f);
     // draw level
-    game.Levels[game.Level].Draw(*Renderer);
+    //BreakoutGame::Levels[Level].Draw(*Renderer);
     // draw player
-    Breakout::Player->Draw(*Renderer);
+    //game->Player->Draw(*Renderer);
     // draw particles
     Particles->Draw();
     // draw ball
-    Breakout::Ball->Draw(*Renderer);
+    Breakout->Ball->Draw(*Renderer);
 }

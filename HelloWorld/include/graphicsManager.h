@@ -1,9 +1,18 @@
+/**
+** Graphics manager manages all graphics relted things,
+shaders and textures. Contains references to texture
+image paths and shader paths.
+**
+**
+**/
+
 #ifndef GRAPHICSMANAGER_H
 #define GRAPHICSMANAGER_H
 
+//#include "core.h"
 #include "helper.h"
 #include "resourceManager.h"
-#include "breakout.h"
+#include "breakoutGame.h"
 #include "spriteRenderer.h"
 #include "particleGenerator.h"
 
@@ -19,8 +28,6 @@ public:
     void SetRenderSpecificControls();
     void Render();
 
-
-    //Breakout game;
     Helper helper;
     SpriteRenderer    *Renderer;
     ParticleGenerator *Particles;

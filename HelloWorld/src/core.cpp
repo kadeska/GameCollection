@@ -6,14 +6,12 @@
 ** Creative Commons, either version 4 of the License, or (at your
 ** option) any later version.
 ******************************************************************/
-#include <glad/glad.h>
-#include <GLFW/glfw3.h>
-
-#include "breakout.h"
-#include "resourceManager.h"
-#include "graphicsManager.h"
-
-#include <iostream>
+/**
+** Core is responsible for the window and user input and entering into main game.
+**
+**/
+#include "core.h"
+#include "breakoutGame.h"
 
 // GLFW function declarations
 void framebuffer_size_callback(GLFWwindow* window, int width, int height);
@@ -24,9 +22,14 @@ const unsigned int SCREEN_WIDTH = 800;
 // The height of the screen
 const unsigned int SCREEN_HEIGHT = 600;
 
-Breakout Breakout(SCREEN_WIDTH, SCREEN_HEIGHT);
+// the same as BreakoutGame BreakoutGame = new BreakoutGame(SCREEN_WIDTH, SCREEN_HEIGHT);
+//BreakoutGame BreakoutGame(SCREEN_WIDTH, SCREEN_HEIGHT);
 
-int startProgram()
+
+//BreakoutGame BreakoutGame(SCREEN_WIDTH, SCREEN_HEIGHT);// BreakoutGame(SCREEN_WIDTH, SCREEN_HEIGHT);
+//BreakoutGame BreakoutGame(SCREEN_WIDTH, SCREEN_HEIGHT);
+
+int startGame() // Entery level 1
 {
     glfwInit();
     glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
@@ -58,15 +61,18 @@ int startProgram()
     glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
     // initialize game
+    // This is the first entry into game related code.
     // ---------------
-    Breakout.Init();
+    BreakoutGame game;
+    game.BreakoutGame(SCREEN_WIDTH, SCREEN_HEIGHT);
+    game.Init();
 
     // deltaTime variables
     // -------------------
     float deltaTime = 0.0f;
     float lastFrame = 0.0f;
 
-    while (!glfwWindowShouldClose(window))
+    while (!glfwWindowShouldClose(window)) // Core game loop
     {
         // calculate delta time
         // --------------------
@@ -77,17 +83,17 @@ int startProgram()
 
         // manage user input
         // -----------------
-        Breakout.ProcessInput(deltaTime);
+        //BreakoutGame.ProcessInput(deltaTime);
 
         // update game state
         // -----------------
-        Breakout.Update(deltaTime);
+        //BreakoutGame.Update(deltaTime);
 
         // render
         // ------
         glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
         glClear(GL_COLOR_BUFFER_BIT);
-        Breakout.Render();
+        BreakoutGame.Render();
         //g.Render();
 
         glfwSwapBuffers(window);
@@ -109,9 +115,9 @@ void key_callback(GLFWwindow* window, int key, int scancode, int action, int mod
     if (key >= 0 && key < 1024)
     {
         if (action == GLFW_PRESS)
-            Breakout.Keys[key] = true;
+            BreakoutGame.Keys[key] = true;
         else if (action == GLFW_RELEASE)
-            Breakout.Keys[key] = false;
+            BreakoutGame.Keys[key] = false;
     }
 }
 

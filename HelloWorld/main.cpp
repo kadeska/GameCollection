@@ -3,7 +3,7 @@
 #include <string>
 #include <engine.h>
 
-#include "program.h"
+#include "core.h"
 
 //using namespace std;
 
@@ -18,7 +18,7 @@ bool loop = true;
 //-----------------------------------------functions
 
 //main function
-int main()
+int main() // Entry level 0
 {
     std::cout << "Hello world!" << '\n';
     //while(loop){work();}; I'd like to re-work the work() function so it is reader friendly and optimized. And should I move the while() loop into this scope or keep it inside the scope of the work() function?
@@ -55,7 +55,7 @@ float run()
         else if (input == "breakout")
         {
             std::cout << "Breakout Game!...\n";
-            startProgram();
+            startGame();
             continue;
         }
 
