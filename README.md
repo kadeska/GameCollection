@@ -1,6 +1,8 @@
 ###### master
 # Welcome
 
+* I am developing using Codeblocks IDE. 
+
 * My goal is to create a 2D game. I want my game to end up as a representation of my favorite style of video game, an open world RPG. I'd like to have concepts from MineCraft such as; blocks, crafting, and open world. With my own twist on things. And concepts from World of Warcraft such as; quests, and an upgrade tree.
 
 * The following is a list of games that I made, or still working on. 
