@@ -63,9 +63,9 @@ int startGame() // Entery level 1
     // initialize game
     // This is the first entry into game related code.
     // ---------------
-    BreakoutGame game;
-    game.BreakoutGame(SCREEN_WIDTH, SCREEN_HEIGHT);
-    game.Init();
+    BreakoutGame* game = new BreakoutGame(SCREEN_WIDTH, SCREEN_HEIGHT);
+    //game->BreakoutGame(SCREEN_WIDTH, SCREEN_HEIGHT);
+    game->Init();
 
     // deltaTime variables
     // -------------------
@@ -93,7 +93,7 @@ int startGame() // Entery level 1
         // ------
         glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
         glClear(GL_COLOR_BUFFER_BIT);
-        BreakoutGame.Render();
+        game->Render();
         //g.Render();
 
         glfwSwapBuffers(window);

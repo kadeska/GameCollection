@@ -61,7 +61,7 @@ const float BALL_RADIUS = 12.5f;
 class BreakoutGame
 {
 public:
-    BreakoutGame();
+    //BreakoutGame();
     // game state
     GameState               State;
     bool                    Keys[1024];
