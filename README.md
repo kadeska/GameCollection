@@ -8,7 +8,7 @@
 * The following is a list of games that I made, or still working on. 
 
 
-###  **BREAKOUT GAME** *  in development 
+###  **BREAKOUT GAME** **  in development 
 
 ##### Welcome to Breakout game.
 
