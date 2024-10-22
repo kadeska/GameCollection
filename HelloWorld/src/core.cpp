@@ -29,6 +29,8 @@ const unsigned int SCREEN_HEIGHT = 600;
 //BreakoutGame BreakoutGame(SCREEN_WIDTH, SCREEN_HEIGHT);// BreakoutGame(SCREEN_WIDTH, SCREEN_HEIGHT);
 //BreakoutGame BreakoutGame(SCREEN_WIDTH, SCREEN_HEIGHT);
 
+BreakoutGame* game;
+
 int startGame() // Entery level 1
 {
     glfwInit();
@@ -63,9 +65,10 @@ int startGame() // Entery level 1
     // initialize game
     // This is the first entry into game related code.
     // ---------------
-    BreakoutGame* game = new BreakoutGame(SCREEN_WIDTH, SCREEN_HEIGHT);
+    // The one and only Instance of BreakoutGame
+    game = new BreakoutGame(SCREEN_WIDTH, SCREEN_HEIGHT);
     //game->BreakoutGame(SCREEN_WIDTH, SCREEN_HEIGHT);
-    game->Init();
+    game->Init(game);
 
     // deltaTime variables
     // -------------------
@@ -115,9 +118,9 @@ void key_callback(GLFWwindow* window, int key, int scancode, int action, int mod
     if (key >= 0 && key < 1024)
     {
         if (action == GLFW_PRESS)
-            BreakoutGame.Keys[key] = true;
+            game->Keys[key] = true;
         else if (action == GLFW_RELEASE)
-            BreakoutGame.Keys[key] = false;
+            game->Keys[key] = false;
     }
 }
 
