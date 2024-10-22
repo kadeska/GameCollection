@@ -1,0 +1,3 @@
+/home/joseph/Dev/codeblocks/HelloWorld/build/CMakeFiles/my_program.dir
+/home/joseph/Dev/codeblocks/HelloWorld/build/CMakeFiles/edit_cache.dir
+/home/joseph/Dev/codeblocks/HelloWorld/build/CMakeFiles/rebuild_cache.dir

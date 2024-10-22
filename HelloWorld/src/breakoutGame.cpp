@@ -9,6 +9,7 @@
 #include "breakoutGame.h"
 
 GraphicsManager gfcMan;
+BreakoutGame* game;
 
 // collision detection
 // -----------------------------------------------------------------------------------------------------------------
@@ -32,8 +33,9 @@ BreakoutGame::~BreakoutGame()
     //delete Renderer;  //Commenting this out fixed the segmentation fault that happens during application termination.
 }
 
-void BreakoutGame::Init()
+void BreakoutGame::Init(BreakoutGame* referanceToSelf)
 {
+    game = referanceToSelf;
 // GraphicsManager
     //gfcMan.GraphicsManager();
     gfcMan.LoadShaders();

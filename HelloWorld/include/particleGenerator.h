@@ -10,8 +10,8 @@
 #define PARTICLE_GENERATOR_H
 #include <vector>
 
-#include <glad/glad.h>
-#include <glm/glm.hpp>
+#include "glad/glad.h"
+#include "glm/glm.hpp"
 
 #include "shader.h"
 #include "texture.h"

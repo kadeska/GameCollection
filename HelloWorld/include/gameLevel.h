@@ -12,8 +12,8 @@
 #define GAMELEVEL_H
 #include <vector>
 
-#include <glad/glad.h>
-#include <glm/glm.hpp>
+#include "glad/glad.h"
+#include "glm/glm.hpp"
 
 #include "gameObject.h"
 #include "spriteRenderer.h"

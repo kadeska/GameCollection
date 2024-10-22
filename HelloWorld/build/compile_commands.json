@@ -1,0 +1,87 @@
+[
+{
+  "directory": "/home/joseph/Dev/codeblocks/HelloWorld/build",
+  "command": "/usr/bin/c++  -I/home/joseph/Dev/codeblocks/HelloWorld/include -I/home/joseph/Dev/codeblocks/HelloWorld/../../../glad/include -I/home/joseph/Dev/codeblocks/HelloWorld/../../../glfw/include/GLFW -g -std=c++17 -o CMakeFiles/my_program.dir/CMakeFiles/3.22.1/CompilerIdCXX/CMakeCXXCompilerId.cpp.o -c /home/joseph/Dev/codeblocks/HelloWorld/build/CMakeFiles/3.22.1/CompilerIdCXX/CMakeCXXCompilerId.cpp",
+  "file": "/home/joseph/Dev/codeblocks/HelloWorld/build/CMakeFiles/3.22.1/CompilerIdCXX/CMakeCXXCompilerId.cpp"
+},
+{
+  "directory": "/home/joseph/Dev/codeblocks/HelloWorld/build",
+  "command": "/usr/bin/c++  -I/home/joseph/Dev/codeblocks/HelloWorld/include -I/home/joseph/Dev/codeblocks/HelloWorld/../../../glad/include -I/home/joseph/Dev/codeblocks/HelloWorld/../../../glfw/include/GLFW -g -std=c++17 -o CMakeFiles/my_program.dir/cppTest.cpp.o -c /home/joseph/Dev/codeblocks/HelloWorld/cppTest.cpp",
+  "file": "/home/joseph/Dev/codeblocks/HelloWorld/cppTest.cpp"
+},
+{
+  "directory": "/home/joseph/Dev/codeblocks/HelloWorld/build",
+  "command": "/usr/bin/c++  -I/home/joseph/Dev/codeblocks/HelloWorld/include -I/home/joseph/Dev/codeblocks/HelloWorld/../../../glad/include -I/home/joseph/Dev/codeblocks/HelloWorld/../../../glfw/include/GLFW -g -std=c++17 -o CMakeFiles/my_program.dir/include/glm/detail/glm.cpp.o -c /home/joseph/Dev/codeblocks/HelloWorld/include/glm/detail/glm.cpp",
+  "file": "/home/joseph/Dev/codeblocks/HelloWorld/include/glm/detail/glm.cpp"
+},
+{
+  "directory": "/home/joseph/Dev/codeblocks/HelloWorld/build",
+  "command": "/usr/bin/c++  -I/home/joseph/Dev/codeblocks/HelloWorld/include -I/home/joseph/Dev/codeblocks/HelloWorld/../../../glad/include -I/home/joseph/Dev/codeblocks/HelloWorld/../../../glfw/include/GLFW -g -std=c++17 -o CMakeFiles/my_program.dir/main.cpp.o -c /home/joseph/Dev/codeblocks/HelloWorld/main.cpp",
+  "file": "/home/joseph/Dev/codeblocks/HelloWorld/main.cpp"
+},
+{
+  "directory": "/home/joseph/Dev/codeblocks/HelloWorld/build",
+  "command": "/usr/bin/c++  -I/home/joseph/Dev/codeblocks/HelloWorld/include -I/home/joseph/Dev/codeblocks/HelloWorld/../../../glad/include -I/home/joseph/Dev/codeblocks/HelloWorld/../../../glfw/include/GLFW -g -std=c++17 -o CMakeFiles/my_program.dir/src/ParticleGenerator.cpp.o -c /home/joseph/Dev/codeblocks/HelloWorld/src/ParticleGenerator.cpp",
+  "file": "/home/joseph/Dev/codeblocks/HelloWorld/src/ParticleGenerator.cpp"
+},
+{
+  "directory": "/home/joseph/Dev/codeblocks/HelloWorld/build",
+  "command": "/usr/bin/c++  -I/home/joseph/Dev/codeblocks/HelloWorld/include -I/home/joseph/Dev/codeblocks/HelloWorld/../../../glad/include -I/home/joseph/Dev/codeblocks/HelloWorld/../../../glfw/include/GLFW -g -std=c++17 -o CMakeFiles/my_program.dir/src/ballObject.cpp.o -c /home/joseph/Dev/codeblocks/HelloWorld/src/ballObject.cpp",
+  "file": "/home/joseph/Dev/codeblocks/HelloWorld/src/ballObject.cpp"
+},
+{
+  "directory": "/home/joseph/Dev/codeblocks/HelloWorld/build",
+  "command": "/usr/bin/c++  -I/home/joseph/Dev/codeblocks/HelloWorld/include -I/home/joseph/Dev/codeblocks/HelloWorld/../../../glad/include -I/home/joseph/Dev/codeblocks/HelloWorld/../../../glfw/include/GLFW -g -std=c++17 -o CMakeFiles/my_program.dir/src/breakoutGame.cpp.o -c /home/joseph/Dev/codeblocks/HelloWorld/src/breakoutGame.cpp",
+  "file": "/home/joseph/Dev/codeblocks/HelloWorld/src/breakoutGame.cpp"
+},
+{
+  "directory": "/home/joseph/Dev/codeblocks/HelloWorld/build",
+  "command": "/usr/bin/c++  -I/home/joseph/Dev/codeblocks/HelloWorld/include -I/home/joseph/Dev/codeblocks/HelloWorld/../../../glad/include -I/home/joseph/Dev/codeblocks/HelloWorld/../../../glfw/include/GLFW -g -std=c++17 -o CMakeFiles/my_program.dir/src/core.cpp.o -c /home/joseph/Dev/codeblocks/HelloWorld/src/core.cpp",
+  "file": "/home/joseph/Dev/codeblocks/HelloWorld/src/core.cpp"
+},
+{
+  "directory": "/home/joseph/Dev/codeblocks/HelloWorld/build",
+  "command": "/usr/bin/c++  -I/home/joseph/Dev/codeblocks/HelloWorld/include -I/home/joseph/Dev/codeblocks/HelloWorld/../../../glad/include -I/home/joseph/Dev/codeblocks/HelloWorld/../../../glfw/include/GLFW -g -std=c++17 -o CMakeFiles/my_program.dir/src/engine.cpp.o -c /home/joseph/Dev/codeblocks/HelloWorld/src/engine.cpp",
+  "file": "/home/joseph/Dev/codeblocks/HelloWorld/src/engine.cpp"
+},
+{
+  "directory": "/home/joseph/Dev/codeblocks/HelloWorld/build",
+  "command": "/usr/bin/c++  -I/home/joseph/Dev/codeblocks/HelloWorld/include -I/home/joseph/Dev/codeblocks/HelloWorld/../../../glad/include -I/home/joseph/Dev/codeblocks/HelloWorld/../../../glfw/include/GLFW -g -std=c++17 -o CMakeFiles/my_program.dir/src/gameLevel.cpp.o -c /home/joseph/Dev/codeblocks/HelloWorld/src/gameLevel.cpp",
+  "file": "/home/joseph/Dev/codeblocks/HelloWorld/src/gameLevel.cpp"
+},
+{
+  "directory": "/home/joseph/Dev/codeblocks/HelloWorld/build",
+  "command": "/usr/bin/c++  -I/home/joseph/Dev/codeblocks/HelloWorld/include -I/home/joseph/Dev/codeblocks/HelloWorld/../../../glad/include -I/home/joseph/Dev/codeblocks/HelloWorld/../../../glfw/include/GLFW -g -std=c++17 -o CMakeFiles/my_program.dir/src/gameObject.cpp.o -c /home/joseph/Dev/codeblocks/HelloWorld/src/gameObject.cpp",
+  "file": "/home/joseph/Dev/codeblocks/HelloWorld/src/gameObject.cpp"
+},
+{
+  "directory": "/home/joseph/Dev/codeblocks/HelloWorld/build",
+  "command": "/usr/bin/c++  -I/home/joseph/Dev/codeblocks/HelloWorld/include -I/home/joseph/Dev/codeblocks/HelloWorld/../../../glad/include -I/home/joseph/Dev/codeblocks/HelloWorld/../../../glfw/include/GLFW -g -std=c++17 -o CMakeFiles/my_program.dir/src/graphicsManager.cpp.o -c /home/joseph/Dev/codeblocks/HelloWorld/src/graphicsManager.cpp",
+  "file": "/home/joseph/Dev/codeblocks/HelloWorld/src/graphicsManager.cpp"
+},
+{
+  "directory": "/home/joseph/Dev/codeblocks/HelloWorld/build",
+  "command": "/usr/bin/c++  -I/home/joseph/Dev/codeblocks/HelloWorld/include -I/home/joseph/Dev/codeblocks/HelloWorld/../../../glad/include -I/home/joseph/Dev/codeblocks/HelloWorld/../../../glfw/include/GLFW -g -std=c++17 -o CMakeFiles/my_program.dir/src/particleGenerator.cpp.o -c /home/joseph/Dev/codeblocks/HelloWorld/src/particleGenerator.cpp",
+  "file": "/home/joseph/Dev/codeblocks/HelloWorld/src/particleGenerator.cpp"
+},
+{
+  "directory": "/home/joseph/Dev/codeblocks/HelloWorld/build",
+  "command": "/usr/bin/c++  -I/home/joseph/Dev/codeblocks/HelloWorld/include -I/home/joseph/Dev/codeblocks/HelloWorld/../../../glad/include -I/home/joseph/Dev/codeblocks/HelloWorld/../../../glfw/include/GLFW -g -std=c++17 -o CMakeFiles/my_program.dir/src/resourceManager.cpp.o -c /home/joseph/Dev/codeblocks/HelloWorld/src/resourceManager.cpp",
+  "file": "/home/joseph/Dev/codeblocks/HelloWorld/src/resourceManager.cpp"
+},
+{
+  "directory": "/home/joseph/Dev/codeblocks/HelloWorld/build",
+  "command": "/usr/bin/c++  -I/home/joseph/Dev/codeblocks/HelloWorld/include -I/home/joseph/Dev/codeblocks/HelloWorld/../../../glad/include -I/home/joseph/Dev/codeblocks/HelloWorld/../../../glfw/include/GLFW -g -std=c++17 -o CMakeFiles/my_program.dir/src/shader.cpp.o -c /home/joseph/Dev/codeblocks/HelloWorld/src/shader.cpp",
+  "file": "/home/joseph/Dev/codeblocks/HelloWorld/src/shader.cpp"
+},
+{
+  "directory": "/home/joseph/Dev/codeblocks/HelloWorld/build",
+  "command": "/usr/bin/c++  -I/home/joseph/Dev/codeblocks/HelloWorld/include -I/home/joseph/Dev/codeblocks/HelloWorld/../../../glad/include -I/home/joseph/Dev/codeblocks/HelloWorld/../../../glfw/include/GLFW -g -std=c++17 -o CMakeFiles/my_program.dir/src/spriteRenderer.cpp.o -c /home/joseph/Dev/codeblocks/HelloWorld/src/spriteRenderer.cpp",
+  "file": "/home/joseph/Dev/codeblocks/HelloWorld/src/spriteRenderer.cpp"
+},
+{
+  "directory": "/home/joseph/Dev/codeblocks/HelloWorld/build",
+  "command": "/usr/bin/c++  -I/home/joseph/Dev/codeblocks/HelloWorld/include -I/home/joseph/Dev/codeblocks/HelloWorld/../../../glad/include -I/home/joseph/Dev/codeblocks/HelloWorld/../../../glfw/include/GLFW -g -std=c++17 -o CMakeFiles/my_program.dir/src/texture.cpp.o -c /home/joseph/Dev/codeblocks/HelloWorld/src/texture.cpp",
+  "file": "/home/joseph/Dev/codeblocks/HelloWorld/src/texture.cpp"
+}
+]

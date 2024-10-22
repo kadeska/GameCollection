@@ -1,14 +1,17 @@
 #ifndef HELPER_H
 #define HELPER_H
 
-#include <iostream>
-#include <cstring>
 #include <filesystem>
+#include <iostream>
+#include <string>
+#include <cstring>
+
 
 class Helper
 {
 public:
-
+    std::filesystem::path currentPath = std::filesystem::current_path();
+    std::string currentPathStr = currentPath.string();
     std::string currentDir = std::filesystem::current_path().string();
 
 // Combine two const char* strings and return char*

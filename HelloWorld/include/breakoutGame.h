@@ -15,8 +15,8 @@
 
 #include <iostream>
 #include <filesystem>
-#include <glad/glad.h>
-#include <GLFW/glfw3.h>
+#include "glad/glad.h"
+#include "GLFW/glfw3.h"
 
 //#include "core.h"
 #include "gameLevel.h"
@@ -55,7 +55,7 @@ const float BALL_RADIUS = 12.5f;
 // Graphic manager.
 //GraphicsManager gfcMan;
 
-// Game holds all game-related state and functionality.
+// BreakoutGame holds all game-related state and functionality.
 // Combines all game-related data into a single class for
 // easy access to each of the components and manageability.
 class BreakoutGame
@@ -74,7 +74,7 @@ public:
     BreakoutGame(unsigned int width, unsigned int height);
     ~BreakoutGame();
     // initialize game state (load all shaders/textures/levels)
-    void Init();
+    void Init(BreakoutGame*);
     // game loop
     void ProcessInput(float dt);
     void Update(float dt);
