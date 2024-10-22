@@ -9,8 +9,7 @@
 
 
 ###  **BREAKOUT GAME**  
-#####  in development 
-
+######  in development 
 ##### Welcome to Breakout game.
 
 * Destroy *all* bricks to clear the level.
