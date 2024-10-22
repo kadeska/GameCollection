@@ -8,9 +8,9 @@
 * The following is a list of games that I made, or still working on. 
 
 
-###  **BREAKOUT GAME**
+###  **BREAKOUT GAME** *  in development 
 
-##### Welcome to Breakout game. *  in development 
+##### Welcome to Breakout game.
 
 * Destroy *all* bricks to clear the level.
 * Use 'WASD' or arrow keys to move platform.
