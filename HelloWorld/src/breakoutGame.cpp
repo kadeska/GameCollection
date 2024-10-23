@@ -169,8 +169,10 @@ Direction VectorDirection(glm::vec2 closest);
 
 void BreakoutGame::DoCollisions()
 {
+    // Go through each brick/gameobject
     for (GameObject &box : this->Levels[this->Level].Bricks)
     {
+        //if the brick is not destroyed 
         if (!box.Destroyed)
         {
             Collision collision = CheckCollision(*Ball, box);
