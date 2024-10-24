@@ -22,8 +22,9 @@ int main() // Entry level 0
 {
     std::cout << "Hello world!" << '\n';
     //while(loop){work();}; I'd like to re-work the work() function so it is reader friendly and optimized. And should I move the while() loop into this scope or keep it inside the scope of the work() function?
-    run();
-    return 0; // return run(); 
+    //run();
+    //return 0; 
+    return run(); 
 }
 
 float run()
