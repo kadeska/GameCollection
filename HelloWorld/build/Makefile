@@ -117,120 +117,24 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named my_program
+# Target rules for targets named MyExecutable
 
 # Build rule for target.
-my_program: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 my_program
-.PHONY : my_program
+MyExecutable: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 MyExecutable
+.PHONY : MyExecutable
 
 # fast build rule for target.
-my_program/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_program.dir/build.make CMakeFiles/my_program.dir/build
-.PHONY : my_program/fast
-
-CMakeFiles/3.22.1/CompilerIdCXX/CMakeCXXCompilerId.o: CMakeFiles/3.22.1/CompilerIdCXX/CMakeCXXCompilerId.cpp.o
-.PHONY : CMakeFiles/3.22.1/CompilerIdCXX/CMakeCXXCompilerId.o
-
-# target to build an object file
-CMakeFiles/3.22.1/CompilerIdCXX/CMakeCXXCompilerId.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_program.dir/build.make CMakeFiles/my_program.dir/CMakeFiles/3.22.1/CompilerIdCXX/CMakeCXXCompilerId.cpp.o
-.PHONY : CMakeFiles/3.22.1/CompilerIdCXX/CMakeCXXCompilerId.cpp.o
-
-CMakeFiles/3.22.1/CompilerIdCXX/CMakeCXXCompilerId.i: CMakeFiles/3.22.1/CompilerIdCXX/CMakeCXXCompilerId.cpp.i
-.PHONY : CMakeFiles/3.22.1/CompilerIdCXX/CMakeCXXCompilerId.i
-
-# target to preprocess a source file
-CMakeFiles/3.22.1/CompilerIdCXX/CMakeCXXCompilerId.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_program.dir/build.make CMakeFiles/my_program.dir/CMakeFiles/3.22.1/CompilerIdCXX/CMakeCXXCompilerId.cpp.i
-.PHONY : CMakeFiles/3.22.1/CompilerIdCXX/CMakeCXXCompilerId.cpp.i
-
-CMakeFiles/3.22.1/CompilerIdCXX/CMakeCXXCompilerId.s: CMakeFiles/3.22.1/CompilerIdCXX/CMakeCXXCompilerId.cpp.s
-.PHONY : CMakeFiles/3.22.1/CompilerIdCXX/CMakeCXXCompilerId.s
-
-# target to generate assembly for a file
-CMakeFiles/3.22.1/CompilerIdCXX/CMakeCXXCompilerId.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_program.dir/build.make CMakeFiles/my_program.dir/CMakeFiles/3.22.1/CompilerIdCXX/CMakeCXXCompilerId.cpp.s
-.PHONY : CMakeFiles/3.22.1/CompilerIdCXX/CMakeCXXCompilerId.cpp.s
-
-cppTest.o: cppTest.cpp.o
-.PHONY : cppTest.o
-
-# target to build an object file
-cppTest.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_program.dir/build.make CMakeFiles/my_program.dir/cppTest.cpp.o
-.PHONY : cppTest.cpp.o
-
-cppTest.i: cppTest.cpp.i
-.PHONY : cppTest.i
-
-# target to preprocess a source file
-cppTest.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_program.dir/build.make CMakeFiles/my_program.dir/cppTest.cpp.i
-.PHONY : cppTest.cpp.i
-
-cppTest.s: cppTest.cpp.s
-.PHONY : cppTest.s
-
-# target to generate assembly for a file
-cppTest.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_program.dir/build.make CMakeFiles/my_program.dir/cppTest.cpp.s
-.PHONY : cppTest.cpp.s
-
-include/glm/detail/glm.o: include/glm/detail/glm.cpp.o
-.PHONY : include/glm/detail/glm.o
-
-# target to build an object file
-include/glm/detail/glm.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_program.dir/build.make CMakeFiles/my_program.dir/include/glm/detail/glm.cpp.o
-.PHONY : include/glm/detail/glm.cpp.o
-
-include/glm/detail/glm.i: include/glm/detail/glm.cpp.i
-.PHONY : include/glm/detail/glm.i
-
-# target to preprocess a source file
-include/glm/detail/glm.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_program.dir/build.make CMakeFiles/my_program.dir/include/glm/detail/glm.cpp.i
-.PHONY : include/glm/detail/glm.cpp.i
-
-include/glm/detail/glm.s: include/glm/detail/glm.cpp.s
-.PHONY : include/glm/detail/glm.s
-
-# target to generate assembly for a file
-include/glm/detail/glm.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_program.dir/build.make CMakeFiles/my_program.dir/include/glm/detail/glm.cpp.s
-.PHONY : include/glm/detail/glm.cpp.s
-
-main.o: main.cpp.o
-.PHONY : main.o
-
-# target to build an object file
-main.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_program.dir/build.make CMakeFiles/my_program.dir/main.cpp.o
-.PHONY : main.cpp.o
-
-main.i: main.cpp.i
-.PHONY : main.i
-
-# target to preprocess a source file
-main.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_program.dir/build.make CMakeFiles/my_program.dir/main.cpp.i
-.PHONY : main.cpp.i
-
-main.s: main.cpp.s
-.PHONY : main.s
-
-# target to generate assembly for a file
-main.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_program.dir/build.make CMakeFiles/my_program.dir/main.cpp.s
-.PHONY : main.cpp.s
+MyExecutable/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MyExecutable.dir/build.make CMakeFiles/MyExecutable.dir/build
+.PHONY : MyExecutable/fast
 
 src/ParticleGenerator.o: src/ParticleGenerator.cpp.o
 .PHONY : src/ParticleGenerator.o
 
 # target to build an object file
 src/ParticleGenerator.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_program.dir/build.make CMakeFiles/my_program.dir/src/ParticleGenerator.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MyExecutable.dir/build.make CMakeFiles/MyExecutable.dir/src/ParticleGenerator.cpp.o
 .PHONY : src/ParticleGenerator.cpp.o
 
 src/ParticleGenerator.i: src/ParticleGenerator.cpp.i
@@ -238,7 +142,7 @@ src/ParticleGenerator.i: src/ParticleGenerator.cpp.i
 
 # target to preprocess a source file
 src/ParticleGenerator.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_program.dir/build.make CMakeFiles/my_program.dir/src/ParticleGenerator.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MyExecutable.dir/build.make CMakeFiles/MyExecutable.dir/src/ParticleGenerator.cpp.i
 .PHONY : src/ParticleGenerator.cpp.i
 
 src/ParticleGenerator.s: src/ParticleGenerator.cpp.s
@@ -246,7 +150,7 @@ src/ParticleGenerator.s: src/ParticleGenerator.cpp.s
 
 # target to generate assembly for a file
 src/ParticleGenerator.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_program.dir/build.make CMakeFiles/my_program.dir/src/ParticleGenerator.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MyExecutable.dir/build.make CMakeFiles/MyExecutable.dir/src/ParticleGenerator.cpp.s
 .PHONY : src/ParticleGenerator.cpp.s
 
 src/ballObject.o: src/ballObject.cpp.o
@@ -254,7 +158,7 @@ src/ballObject.o: src/ballObject.cpp.o
 
 # target to build an object file
 src/ballObject.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_program.dir/build.make CMakeFiles/my_program.dir/src/ballObject.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MyExecutable.dir/build.make CMakeFiles/MyExecutable.dir/src/ballObject.cpp.o
 .PHONY : src/ballObject.cpp.o
 
 src/ballObject.i: src/ballObject.cpp.i
@@ -262,7 +166,7 @@ src/ballObject.i: src/ballObject.cpp.i
 
 # target to preprocess a source file
 src/ballObject.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_program.dir/build.make CMakeFiles/my_program.dir/src/ballObject.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MyExecutable.dir/build.make CMakeFiles/MyExecutable.dir/src/ballObject.cpp.i
 .PHONY : src/ballObject.cpp.i
 
 src/ballObject.s: src/ballObject.cpp.s
@@ -270,7 +174,7 @@ src/ballObject.s: src/ballObject.cpp.s
 
 # target to generate assembly for a file
 src/ballObject.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_program.dir/build.make CMakeFiles/my_program.dir/src/ballObject.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MyExecutable.dir/build.make CMakeFiles/MyExecutable.dir/src/ballObject.cpp.s
 .PHONY : src/ballObject.cpp.s
 
 src/breakoutGame.o: src/breakoutGame.cpp.o
@@ -278,7 +182,7 @@ src/breakoutGame.o: src/breakoutGame.cpp.o
 
 # target to build an object file
 src/breakoutGame.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_program.dir/build.make CMakeFiles/my_program.dir/src/breakoutGame.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MyExecutable.dir/build.make CMakeFiles/MyExecutable.dir/src/breakoutGame.cpp.o
 .PHONY : src/breakoutGame.cpp.o
 
 src/breakoutGame.i: src/breakoutGame.cpp.i
@@ -286,7 +190,7 @@ src/breakoutGame.i: src/breakoutGame.cpp.i
 
 # target to preprocess a source file
 src/breakoutGame.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_program.dir/build.make CMakeFiles/my_program.dir/src/breakoutGame.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MyExecutable.dir/build.make CMakeFiles/MyExecutable.dir/src/breakoutGame.cpp.i
 .PHONY : src/breakoutGame.cpp.i
 
 src/breakoutGame.s: src/breakoutGame.cpp.s
@@ -294,7 +198,7 @@ src/breakoutGame.s: src/breakoutGame.cpp.s
 
 # target to generate assembly for a file
 src/breakoutGame.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_program.dir/build.make CMakeFiles/my_program.dir/src/breakoutGame.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MyExecutable.dir/build.make CMakeFiles/MyExecutable.dir/src/breakoutGame.cpp.s
 .PHONY : src/breakoutGame.cpp.s
 
 src/core.o: src/core.cpp.o
@@ -302,7 +206,7 @@ src/core.o: src/core.cpp.o
 
 # target to build an object file
 src/core.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_program.dir/build.make CMakeFiles/my_program.dir/src/core.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MyExecutable.dir/build.make CMakeFiles/MyExecutable.dir/src/core.cpp.o
 .PHONY : src/core.cpp.o
 
 src/core.i: src/core.cpp.i
@@ -310,7 +214,7 @@ src/core.i: src/core.cpp.i
 
 # target to preprocess a source file
 src/core.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_program.dir/build.make CMakeFiles/my_program.dir/src/core.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MyExecutable.dir/build.make CMakeFiles/MyExecutable.dir/src/core.cpp.i
 .PHONY : src/core.cpp.i
 
 src/core.s: src/core.cpp.s
@@ -318,7 +222,7 @@ src/core.s: src/core.cpp.s
 
 # target to generate assembly for a file
 src/core.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_program.dir/build.make CMakeFiles/my_program.dir/src/core.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MyExecutable.dir/build.make CMakeFiles/MyExecutable.dir/src/core.cpp.s
 .PHONY : src/core.cpp.s
 
 src/engine.o: src/engine.cpp.o
@@ -326,7 +230,7 @@ src/engine.o: src/engine.cpp.o
 
 # target to build an object file
 src/engine.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_program.dir/build.make CMakeFiles/my_program.dir/src/engine.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MyExecutable.dir/build.make CMakeFiles/MyExecutable.dir/src/engine.cpp.o
 .PHONY : src/engine.cpp.o
 
 src/engine.i: src/engine.cpp.i
@@ -334,7 +238,7 @@ src/engine.i: src/engine.cpp.i
 
 # target to preprocess a source file
 src/engine.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_program.dir/build.make CMakeFiles/my_program.dir/src/engine.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MyExecutable.dir/build.make CMakeFiles/MyExecutable.dir/src/engine.cpp.i
 .PHONY : src/engine.cpp.i
 
 src/engine.s: src/engine.cpp.s
@@ -342,7 +246,7 @@ src/engine.s: src/engine.cpp.s
 
 # target to generate assembly for a file
 src/engine.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_program.dir/build.make CMakeFiles/my_program.dir/src/engine.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MyExecutable.dir/build.make CMakeFiles/MyExecutable.dir/src/engine.cpp.s
 .PHONY : src/engine.cpp.s
 
 src/gameLevel.o: src/gameLevel.cpp.o
@@ -350,7 +254,7 @@ src/gameLevel.o: src/gameLevel.cpp.o
 
 # target to build an object file
 src/gameLevel.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_program.dir/build.make CMakeFiles/my_program.dir/src/gameLevel.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MyExecutable.dir/build.make CMakeFiles/MyExecutable.dir/src/gameLevel.cpp.o
 .PHONY : src/gameLevel.cpp.o
 
 src/gameLevel.i: src/gameLevel.cpp.i
@@ -358,7 +262,7 @@ src/gameLevel.i: src/gameLevel.cpp.i
 
 # target to preprocess a source file
 src/gameLevel.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_program.dir/build.make CMakeFiles/my_program.dir/src/gameLevel.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MyExecutable.dir/build.make CMakeFiles/MyExecutable.dir/src/gameLevel.cpp.i
 .PHONY : src/gameLevel.cpp.i
 
 src/gameLevel.s: src/gameLevel.cpp.s
@@ -366,7 +270,7 @@ src/gameLevel.s: src/gameLevel.cpp.s
 
 # target to generate assembly for a file
 src/gameLevel.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_program.dir/build.make CMakeFiles/my_program.dir/src/gameLevel.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MyExecutable.dir/build.make CMakeFiles/MyExecutable.dir/src/gameLevel.cpp.s
 .PHONY : src/gameLevel.cpp.s
 
 src/gameObject.o: src/gameObject.cpp.o
@@ -374,7 +278,7 @@ src/gameObject.o: src/gameObject.cpp.o
 
 # target to build an object file
 src/gameObject.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_program.dir/build.make CMakeFiles/my_program.dir/src/gameObject.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MyExecutable.dir/build.make CMakeFiles/MyExecutable.dir/src/gameObject.cpp.o
 .PHONY : src/gameObject.cpp.o
 
 src/gameObject.i: src/gameObject.cpp.i
@@ -382,7 +286,7 @@ src/gameObject.i: src/gameObject.cpp.i
 
 # target to preprocess a source file
 src/gameObject.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_program.dir/build.make CMakeFiles/my_program.dir/src/gameObject.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MyExecutable.dir/build.make CMakeFiles/MyExecutable.dir/src/gameObject.cpp.i
 .PHONY : src/gameObject.cpp.i
 
 src/gameObject.s: src/gameObject.cpp.s
@@ -390,7 +294,7 @@ src/gameObject.s: src/gameObject.cpp.s
 
 # target to generate assembly for a file
 src/gameObject.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_program.dir/build.make CMakeFiles/my_program.dir/src/gameObject.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MyExecutable.dir/build.make CMakeFiles/MyExecutable.dir/src/gameObject.cpp.s
 .PHONY : src/gameObject.cpp.s
 
 src/graphicsManager.o: src/graphicsManager.cpp.o
@@ -398,7 +302,7 @@ src/graphicsManager.o: src/graphicsManager.cpp.o
 
 # target to build an object file
 src/graphicsManager.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_program.dir/build.make CMakeFiles/my_program.dir/src/graphicsManager.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MyExecutable.dir/build.make CMakeFiles/MyExecutable.dir/src/graphicsManager.cpp.o
 .PHONY : src/graphicsManager.cpp.o
 
 src/graphicsManager.i: src/graphicsManager.cpp.i
@@ -406,7 +310,7 @@ src/graphicsManager.i: src/graphicsManager.cpp.i
 
 # target to preprocess a source file
 src/graphicsManager.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_program.dir/build.make CMakeFiles/my_program.dir/src/graphicsManager.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MyExecutable.dir/build.make CMakeFiles/MyExecutable.dir/src/graphicsManager.cpp.i
 .PHONY : src/graphicsManager.cpp.i
 
 src/graphicsManager.s: src/graphicsManager.cpp.s
@@ -414,7 +318,7 @@ src/graphicsManager.s: src/graphicsManager.cpp.s
 
 # target to generate assembly for a file
 src/graphicsManager.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_program.dir/build.make CMakeFiles/my_program.dir/src/graphicsManager.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MyExecutable.dir/build.make CMakeFiles/MyExecutable.dir/src/graphicsManager.cpp.s
 .PHONY : src/graphicsManager.cpp.s
 
 src/particleGenerator.o: src/particleGenerator.cpp.o
@@ -422,7 +326,7 @@ src/particleGenerator.o: src/particleGenerator.cpp.o
 
 # target to build an object file
 src/particleGenerator.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_program.dir/build.make CMakeFiles/my_program.dir/src/particleGenerator.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MyExecutable.dir/build.make CMakeFiles/MyExecutable.dir/src/particleGenerator.cpp.o
 .PHONY : src/particleGenerator.cpp.o
 
 src/particleGenerator.i: src/particleGenerator.cpp.i
@@ -430,7 +334,7 @@ src/particleGenerator.i: src/particleGenerator.cpp.i
 
 # target to preprocess a source file
 src/particleGenerator.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_program.dir/build.make CMakeFiles/my_program.dir/src/particleGenerator.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MyExecutable.dir/build.make CMakeFiles/MyExecutable.dir/src/particleGenerator.cpp.i
 .PHONY : src/particleGenerator.cpp.i
 
 src/particleGenerator.s: src/particleGenerator.cpp.s
@@ -438,7 +342,7 @@ src/particleGenerator.s: src/particleGenerator.cpp.s
 
 # target to generate assembly for a file
 src/particleGenerator.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_program.dir/build.make CMakeFiles/my_program.dir/src/particleGenerator.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MyExecutable.dir/build.make CMakeFiles/MyExecutable.dir/src/particleGenerator.cpp.s
 .PHONY : src/particleGenerator.cpp.s
 
 src/resourceManager.o: src/resourceManager.cpp.o
@@ -446,7 +350,7 @@ src/resourceManager.o: src/resourceManager.cpp.o
 
 # target to build an object file
 src/resourceManager.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_program.dir/build.make CMakeFiles/my_program.dir/src/resourceManager.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MyExecutable.dir/build.make CMakeFiles/MyExecutable.dir/src/resourceManager.cpp.o
 .PHONY : src/resourceManager.cpp.o
 
 src/resourceManager.i: src/resourceManager.cpp.i
@@ -454,7 +358,7 @@ src/resourceManager.i: src/resourceManager.cpp.i
 
 # target to preprocess a source file
 src/resourceManager.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_program.dir/build.make CMakeFiles/my_program.dir/src/resourceManager.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MyExecutable.dir/build.make CMakeFiles/MyExecutable.dir/src/resourceManager.cpp.i
 .PHONY : src/resourceManager.cpp.i
 
 src/resourceManager.s: src/resourceManager.cpp.s
@@ -462,7 +366,7 @@ src/resourceManager.s: src/resourceManager.cpp.s
 
 # target to generate assembly for a file
 src/resourceManager.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_program.dir/build.make CMakeFiles/my_program.dir/src/resourceManager.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MyExecutable.dir/build.make CMakeFiles/MyExecutable.dir/src/resourceManager.cpp.s
 .PHONY : src/resourceManager.cpp.s
 
 src/shader.o: src/shader.cpp.o
@@ -470,7 +374,7 @@ src/shader.o: src/shader.cpp.o
 
 # target to build an object file
 src/shader.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_program.dir/build.make CMakeFiles/my_program.dir/src/shader.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MyExecutable.dir/build.make CMakeFiles/MyExecutable.dir/src/shader.cpp.o
 .PHONY : src/shader.cpp.o
 
 src/shader.i: src/shader.cpp.i
@@ -478,7 +382,7 @@ src/shader.i: src/shader.cpp.i
 
 # target to preprocess a source file
 src/shader.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_program.dir/build.make CMakeFiles/my_program.dir/src/shader.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MyExecutable.dir/build.make CMakeFiles/MyExecutable.dir/src/shader.cpp.i
 .PHONY : src/shader.cpp.i
 
 src/shader.s: src/shader.cpp.s
@@ -486,7 +390,7 @@ src/shader.s: src/shader.cpp.s
 
 # target to generate assembly for a file
 src/shader.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_program.dir/build.make CMakeFiles/my_program.dir/src/shader.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MyExecutable.dir/build.make CMakeFiles/MyExecutable.dir/src/shader.cpp.s
 .PHONY : src/shader.cpp.s
 
 src/spriteRenderer.o: src/spriteRenderer.cpp.o
@@ -494,7 +398,7 @@ src/spriteRenderer.o: src/spriteRenderer.cpp.o
 
 # target to build an object file
 src/spriteRenderer.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_program.dir/build.make CMakeFiles/my_program.dir/src/spriteRenderer.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MyExecutable.dir/build.make CMakeFiles/MyExecutable.dir/src/spriteRenderer.cpp.o
 .PHONY : src/spriteRenderer.cpp.o
 
 src/spriteRenderer.i: src/spriteRenderer.cpp.i
@@ -502,7 +406,7 @@ src/spriteRenderer.i: src/spriteRenderer.cpp.i
 
 # target to preprocess a source file
 src/spriteRenderer.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_program.dir/build.make CMakeFiles/my_program.dir/src/spriteRenderer.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MyExecutable.dir/build.make CMakeFiles/MyExecutable.dir/src/spriteRenderer.cpp.i
 .PHONY : src/spriteRenderer.cpp.i
 
 src/spriteRenderer.s: src/spriteRenderer.cpp.s
@@ -510,7 +414,7 @@ src/spriteRenderer.s: src/spriteRenderer.cpp.s
 
 # target to generate assembly for a file
 src/spriteRenderer.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_program.dir/build.make CMakeFiles/my_program.dir/src/spriteRenderer.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MyExecutable.dir/build.make CMakeFiles/MyExecutable.dir/src/spriteRenderer.cpp.s
 .PHONY : src/spriteRenderer.cpp.s
 
 src/texture.o: src/texture.cpp.o
@@ -518,7 +422,7 @@ src/texture.o: src/texture.cpp.o
 
 # target to build an object file
 src/texture.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_program.dir/build.make CMakeFiles/my_program.dir/src/texture.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MyExecutable.dir/build.make CMakeFiles/MyExecutable.dir/src/texture.cpp.o
 .PHONY : src/texture.cpp.o
 
 src/texture.i: src/texture.cpp.i
@@ -526,7 +430,7 @@ src/texture.i: src/texture.cpp.i
 
 # target to preprocess a source file
 src/texture.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_program.dir/build.make CMakeFiles/my_program.dir/src/texture.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MyExecutable.dir/build.make CMakeFiles/MyExecutable.dir/src/texture.cpp.i
 .PHONY : src/texture.cpp.i
 
 src/texture.s: src/texture.cpp.s
@@ -534,7 +438,7 @@ src/texture.s: src/texture.cpp.s
 
 # target to generate assembly for a file
 src/texture.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_program.dir/build.make CMakeFiles/my_program.dir/src/texture.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MyExecutable.dir/build.make CMakeFiles/MyExecutable.dir/src/texture.cpp.s
 .PHONY : src/texture.cpp.s
 
 # Help Target
@@ -545,19 +449,7 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
-	@echo "... my_program"
-	@echo "... CMakeFiles/3.22.1/CompilerIdCXX/CMakeCXXCompilerId.o"
-	@echo "... CMakeFiles/3.22.1/CompilerIdCXX/CMakeCXXCompilerId.i"
-	@echo "... CMakeFiles/3.22.1/CompilerIdCXX/CMakeCXXCompilerId.s"
-	@echo "... cppTest.o"
-	@echo "... cppTest.i"
-	@echo "... cppTest.s"
-	@echo "... include/glm/detail/glm.o"
-	@echo "... include/glm/detail/glm.i"
-	@echo "... include/glm/detail/glm.s"
-	@echo "... main.o"
-	@echo "... main.i"
-	@echo "... main.s"
+	@echo "... MyExecutable"
 	@echo "... src/ParticleGenerator.o"
 	@echo "... src/ParticleGenerator.i"
 	@echo "... src/ParticleGenerator.s"

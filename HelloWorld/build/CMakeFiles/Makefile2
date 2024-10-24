@@ -63,7 +63,7 @@ CMAKE_BINARY_DIR = /home/joseph/Dev/codeblocks/HelloWorld/build
 # Directory level rules for the build root directory
 
 # The main recursive "all" target.
-all: CMakeFiles/my_program.dir/all
+all: CMakeFiles/MyExecutable.dir/all
 .PHONY : all
 
 # The main recursive "preinstall" target.
@@ -71,34 +71,34 @@ preinstall:
 .PHONY : preinstall
 
 # The main recursive "clean" target.
-clean: CMakeFiles/my_program.dir/clean
+clean: CMakeFiles/MyExecutable.dir/clean
 .PHONY : clean
 
 #=============================================================================
-# Target rules for target CMakeFiles/my_program.dir
+# Target rules for target CMakeFiles/MyExecutable.dir
 
 # All Build rule for target.
-CMakeFiles/my_program.dir/all:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_program.dir/build.make CMakeFiles/my_program.dir/depend
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_program.dir/build.make CMakeFiles/my_program.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/joseph/Dev/codeblocks/HelloWorld/build/CMakeFiles --progress-num=1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18 "Built target my_program"
-.PHONY : CMakeFiles/my_program.dir/all
+CMakeFiles/MyExecutable.dir/all:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MyExecutable.dir/build.make CMakeFiles/MyExecutable.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MyExecutable.dir/build.make CMakeFiles/MyExecutable.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/joseph/Dev/codeblocks/HelloWorld/build/CMakeFiles --progress-num=1,2,3,4,5,6,7,8,9,10,11,12,13,14 "Built target MyExecutable"
+.PHONY : CMakeFiles/MyExecutable.dir/all
 
 # Build rule for subdir invocation for target.
-CMakeFiles/my_program.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/joseph/Dev/codeblocks/HelloWorld/build/CMakeFiles 18
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/my_program.dir/all
+CMakeFiles/MyExecutable.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/joseph/Dev/codeblocks/HelloWorld/build/CMakeFiles 14
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/MyExecutable.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/joseph/Dev/codeblocks/HelloWorld/build/CMakeFiles 0
-.PHONY : CMakeFiles/my_program.dir/rule
+.PHONY : CMakeFiles/MyExecutable.dir/rule
 
 # Convenience name for target.
-my_program: CMakeFiles/my_program.dir/rule
-.PHONY : my_program
+MyExecutable: CMakeFiles/MyExecutable.dir/rule
+.PHONY : MyExecutable
 
 # clean rule for target.
-CMakeFiles/my_program.dir/clean:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_program.dir/build.make CMakeFiles/my_program.dir/clean
-.PHONY : CMakeFiles/my_program.dir/clean
+CMakeFiles/MyExecutable.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MyExecutable.dir/build.make CMakeFiles/MyExecutable.dir/clean
+.PHONY : CMakeFiles/MyExecutable.dir/clean
 
 #=============================================================================
 # Special targets to cleanup operation of make.
