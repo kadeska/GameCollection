@@ -9,8 +9,18 @@ GraphicsManager::GraphicsManager()
 
 void GraphicsManager::init(float _width, float _height)
 {
-    sprite_vs_dir = helper.combineStrings(helper.currentDir.c_str(), vs_sprite);
-    vs_sprite = "/src/shaders/breakout/sprite_vertex.vs";
+    sprite_vs = "/shaders/breakout/sprite_vertex.vs";
+    sprite_fs = "/shaders/breakout/sprite_fragment.fs";
+
+    particle_vs = "/shaders/breakout/particle_vertex.vs";
+    particle_fs = "/shaders/breakout/particle_fragment.fs";
+
+    sprite_vs_dir = helper.combineStrings(helper.currentDir.c_str(), sprite_vs);
+    sprite_fs_dir = helper.combineStrings(helper.currentDir.c_str(), sprite_fs);
+
+    particle_vs_dir = helper.combineStrings(helper.currentDir.c_str(), particle_vs);
+    particle_fs_dir = helper.combineStrings(helper.currentDir.c_str(), particle_fs);
+    
     width = _width;
     height = _height;
 }
@@ -20,15 +30,18 @@ void GraphicsManager::LoadShaders()
     //ResourceManager::LoadShader("shaders/sprite.vs", "shaders/sprite.frag", nullptr, "sprite");
 
     const char *vs_sprite = sprite_vs_dir;
-    const char *fs_sprite = "/home/joseph/Dev/codeblocks/HelloWorld/src/shaders/breakout/sprite_fragment.fs";
+    const char *fs_sprite = sprite_fs_dir;
     const char *gs_sprite = nullptr;
 
-    const char *vs_particle = "/home/joseph/Dev/codeblocks/HelloWorld/src/shaders/breakout/particle_vertex.vs";
-    const char *fs_particle = "/home/joseph/Dev/codeblocks/HelloWorld/src/shaders/breakout/particle_fragment.fs";
+    const char *vs_particle = particle_vs_dir;
+    const char *fs_particle = particle_fs_dir;
     const char *gs_particle = nullptr;
 
-    //std::cout << vs_particle << "\n";
-    //std::cout << vs_particle << "\n";
+
+    std::cout << sprite_vs_dir << "\n";
+    std::cout << fs_sprite << "\n";
+    std::cout << vs_particle << "\n";
+    std::cout << vs_particle << "\n";
 
     //std::cout << vs;
 

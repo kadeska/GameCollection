@@ -36,12 +36,18 @@ public:
     unsigned int width = 0, height = 0;
     //Breakout game;
     const char* sprite_vs_dir;
+    const char* sprite_fs_dir;
+    const char* particle_vs_dir;
+    const char* particle_fs_dir;
 
 
 protected:
 
 private:
-    const char* vs_sprite;
+    const char* sprite_vs;
+    const char* sprite_fs;
+    const char* particle_vs;
+    const char* particle_fs;
 };
 
 #endif // GRAPHICSMANAGER_H
