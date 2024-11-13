@@ -4,6 +4,7 @@
 #include "../include/engine.hpp"
 
 #include "../include/core.hpp"
+#include "../include/networking.hpp"
 
 //using namespace std;
 
@@ -40,6 +41,7 @@ float run()
 
         if (input == "exit" || input == "stop" || input == "abort")
         {
+            std::cout << "Stopping program!...\n";
             return 0;
         }
         else if (input == "test")
@@ -57,6 +59,18 @@ float run()
         {
             std::cout << "Breakout Game!...\n";
             startGame();
+            continue;
+        }
+        else if (input == "server")
+        {
+            std::cout << "Starting server!...\n";
+            startServer();
+            continue;
+        }
+        else if (input == "client")
+        {
+            std::cout << "Starting client!...\n";
+            startClient();
             continue;
         }
 
