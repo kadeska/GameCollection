@@ -31,7 +31,7 @@ LIB := lib
 EXTERNAL_INCLUDES := -I/usr/include
 
 # path to the glad files (absolute path outside the working directory)
-GLAD_PATH := /usr/include/glad
+GLAD_PATH := src
 
 ifeq ($(OS),Windows_NT)
 MAIN := main.exe
