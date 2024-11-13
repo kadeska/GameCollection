@@ -9,17 +9,22 @@ GraphicsManager::GraphicsManager()
 
 void GraphicsManager::init(float _width, float _height)
 {
+    std::cout << "Hello!!";
+
     sprite_vs = "/shaders/breakout/sprite_vertex.vs";
     sprite_fs = "/shaders/breakout/sprite_fragment.fs";
 
     particle_vs = "/shaders/breakout/particle_vertex.vs";
     particle_fs = "/shaders/breakout/particle_fragment.fs";
 
-    sprite_vs_dir = helper.combineStrings(helper.currentDir.c_str(), sprite_vs);
-    sprite_fs_dir = helper.combineStrings(helper.currentDir.c_str(), sprite_fs);
+    
+    std::cout << helper.combineStrings(helper.currentDir.c_str(), sprite_vs.c_str());
 
-    particle_vs_dir = helper.combineStrings(helper.currentDir.c_str(), particle_vs);
-    particle_fs_dir = helper.combineStrings(helper.currentDir.c_str(), particle_fs);
+    sprite_vs_dir = helper.combineStrings(helper.currentDir.c_str(), sprite_vs.c_str());
+    sprite_fs_dir = helper.combineStrings(helper.currentDir.c_str(), sprite_fs.c_str());
+
+    particle_vs_dir = helper.combineStrings(helper.currentDir.c_str(), particle_vs.c_str());
+    particle_fs_dir = helper.combineStrings(helper.currentDir.c_str(), particle_fs.c_str());
     
     width = _width;
     height = _height;
@@ -29,26 +34,26 @@ void GraphicsManager::LoadShaders()
 {
     //ResourceManager::LoadShader("shaders/sprite.vs", "shaders/sprite.frag", nullptr, "sprite");
 
-    const char *vs_sprite = sprite_vs_dir;
-    const char *fs_sprite = sprite_fs_dir;
-    const char *gs_sprite = nullptr;
+//    const char *vs_sprite = sprite_vs_dir;
+//    const char *fs_sprite = sprite_fs_dir;
+//    const char *gs_sprite = nullptr;
 
-    const char *vs_particle = particle_vs_dir;
-    const char *fs_particle = particle_fs_dir;
-    const char *gs_particle = nullptr;
+//    const char *vs_particle = particle_vs_dir;
+//    const char *fs_particle = particle_fs_dir;
+//    const char *gs_particle = nullptr;
 
 
-    std::cout << sprite_vs_dir << "\n";
-    std::cout << fs_sprite << "\n";
-    std::cout << vs_particle << "\n";
-    std::cout << vs_particle << "\n";
+    //std::cout << sprite_vs_dir << "\n";
+    //std::cout << sprite_fs_dir << "\n";
+    //std::cout << particle_fs_dir << "\n";
+    //std::cout << particle_vs_dir << "\n";
 
     //std::cout << vs;
 
     // The above code could be moved into a helper class or some sort of data management class
 
-    ResourceManager::LoadShader(vs_sprite, fs_sprite, gs_sprite, "sprite");
-    ResourceManager::LoadShader(vs_particle, fs_particle, gs_particle, "particle");
+    ResourceManager::LoadShader(sprite_vs_dir.c_str(), sprite_fs_dir.c_str(), nullptr, "sprite");
+    ResourceManager::LoadShader(particle_vs_dir.c_str(), particle_fs_dir.c_str(), nullptr, "particle");
 }
 
 void GraphicsManager::ConfigureShaders()

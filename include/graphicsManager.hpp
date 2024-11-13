@@ -35,19 +35,19 @@ public:
     // Variables
     unsigned int width = 0, height = 0;
     //Breakout game;
-    const char* sprite_vs_dir;
-    const char* sprite_fs_dir;
-    const char* particle_vs_dir;
-    const char* particle_fs_dir;
+    std::string sprite_vs_dir;
+    std::string sprite_fs_dir;
+    std::string particle_vs_dir;
+    std::string particle_fs_dir;
 
 
 protected:
 
 private:
-    const char* sprite_vs;
-    const char* sprite_fs;
-    const char* particle_vs;
-    const char* particle_fs;
+    std::string sprite_vs;
+    std::string sprite_fs;
+    std::string particle_vs;
+    std::string particle_fs;
 };
 
 #endif // GRAPHICSMANAGER_H

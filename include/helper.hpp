@@ -27,6 +27,8 @@ public:
         // Copy first string and concatenate the second
         strcpy(result, str1);
         strcat(result, str2);
+
+        std::cout << result << "HELLO!!";   
         return result; // return combined string
 
     }
