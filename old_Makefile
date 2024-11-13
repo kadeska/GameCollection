@@ -1,0 +1,52 @@
+# Compiler and Linker Settings
+CXX = g++
+CXXFLAGS := -std=c++17 -Wall -Wextra -g
+LDFLAGS  := -lGL -lGLU -lglfw -ldl -lX11 -lpthread -lXrandr -lXi
+
+# Directories
+SRC_DIR := src
+INCLUDE_DIR := include
+LIB_DIR := lib
+OUTPUT_DIR := output
+
+# Source Files
+SOURCES := $(wildcard $(SRC_DIR)/*.cpp)
+OBJECTS := $(SOURCES:$(SRC_DIR)/%.cpp=$(OUTPUT_DIR)/%.o)
+
+# Output Executable
+EXEC := $(OUTPUT_DIR)/main
+
+# GLAD & GLFW specific flags
+GLAD_DIR := /usr/include/glad
+GLFW_DIR := /usr/include/GLFW
+
+# Include Paths
+INCLUDE_FLAGS := -I$(INCLUDE_DIR) -I$(GLAD_DIR) -I$(GLFW_DIR)
+
+# Library Paths
+LIB_FLAGS := -L$(LIB_DIR) -L$(GLFW_DIR)
+
+# Libraries to link with
+LIBS := -lglfw -lGL
+
+# Targets
+all: $(EXEC)
+
+# Linking the final executable
+$(EXEC): $(OBJECTS)
+	$(CXX) $(OBJECTS) -o $@ $(LDFLAGS) $(LIB_FLAGS) $(LIBS)
+
+# Compile each source file into an object file
+$(OUTPUT_DIR)/%.o: $(SRC_DIR)/%.cpp
+	$(CXX) $(CXXFLAGS) $(INCLUDE_FLAGS) -c $< -o $@
+
+# Clean up compiled files
+clean:
+	rm -rf $(OUTPUT_DIR)/*.o $(EXEC)
+
+# Create output directory if it does not exist
+$(OUTPUT_DIR):
+	mkdir -p $(OUTPUT_DIR)
+
+# Include any dependencies if available
+-include $(OBJECTS:.o=.d)
