@@ -9,8 +9,8 @@
 #ifndef BALLOBJECT_H
 #define BALLOBJECT_H
 
-#include "glad/glad.h"
-#include "glm/glm.hpp"
+#include <glad/glad.h>
+#include <glm/glm.hpp>
 
 #include "gameObject.hpp"
 #include "texture.hpp"
