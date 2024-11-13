@@ -84,6 +84,7 @@ $(MAIN): $(OBJECTS) $(GLAD_SRC:.c=.o)
 # include all .d files
 -include $(DEPS)
 
+
 # Rule for compiling .cpp files to .o and .d files
 .cpp.o:
 	$(CXX) $(CXXFLAGS) $(INCLUDES) -c -MMD $< -o $@
