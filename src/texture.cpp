@@ -7,6 +7,7 @@
 ** option) any later version.
 ******************************************************************/
 #include <iostream>
+#include "glad/glad.h"
 
 #include "../include/texture.hpp"
 
