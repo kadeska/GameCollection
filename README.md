@@ -27,6 +27,6 @@
 ## How to build and run program 
     
 
-*1) "./make.sh"
+* 1) "./make.sh"
 
-*2) "./output/main
+* 2) "./output/main
