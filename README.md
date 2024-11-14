@@ -25,4 +25,7 @@
 
 
 ## How to build and run program 
-
+    
+#### Step one
+* "./make.sh"
+* "./output/main
