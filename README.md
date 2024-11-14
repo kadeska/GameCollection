@@ -28,4 +28,5 @@
     
 #### Step one
 * "./make.sh"
+#### Step two
 * "./output/main
