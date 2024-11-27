@@ -30,3 +30,5 @@
 * 1) "./make.sh"
 
 * 2) "./output/main
+
+* 3) Type "Breakout" and press enter. This will run the breakout game.
