@@ -10,7 +10,12 @@
 
 #include <iostream>
 
+#include <boost/filesystem.hpp>
+
+
+namespace fs = boost::filesystem;
 
 int startGame();
+fs::path getPath(std::string path_string);
 
 #endif

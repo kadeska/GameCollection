@@ -18,13 +18,13 @@ void GraphicsManager::init(float _width, float _height)
     particle_fs = "/shaders/breakout/particle_fragment.fs";
 
     
-    std::cout << helper.combineStrings(helper.currentDir.c_str(), sprite_vs.c_str());
+    std::cout << helper.combineStrings(helper.currentPathStr.c_str(), sprite_vs.c_str());
 
-    sprite_vs_dir = helper.combineStrings(helper.currentDir.c_str(), sprite_vs.c_str());
-    sprite_fs_dir = helper.combineStrings(helper.currentDir.c_str(), sprite_fs.c_str());
+    sprite_vs_dir = helper.combineStrings(helper.currentPathStr.c_str(), sprite_vs.c_str());
+    sprite_fs_dir = helper.combineStrings(helper.currentPathStr.c_str(), sprite_fs.c_str());
 
-    particle_vs_dir = helper.combineStrings(helper.currentDir.c_str(), particle_vs.c_str());
-    particle_fs_dir = helper.combineStrings(helper.currentDir.c_str(), particle_fs.c_str());
+    particle_vs_dir = helper.combineStrings(helper.currentPathStr.c_str(), particle_vs.c_str());
+    particle_fs_dir = helper.combineStrings(helper.currentPathStr.c_str(), particle_fs.c_str());
     
     width = _width;
     height = _height;
