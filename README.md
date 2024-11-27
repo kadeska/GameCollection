@@ -31,4 +31,4 @@
 
 * 2) "./output/main
 
-* 3) Type "Breakout" and press enter. This will run the breakout game.
+* 3) Read and follow the prompt. 
