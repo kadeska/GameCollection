@@ -55,9 +55,10 @@ const float BALL_RADIUS = 12.5f;
 // Graphic manager.
 //GraphicsManager gfcMan;
 
-// BreakoutGame holds all game-related state and functionality.
-// Combines all game-related data into a single class for
-// easy access to each of the components and manageability.
+/**  BreakoutGame holds all game-related state and functionality.
+* Combines all game-related data into a single class for
+* easy access to each of the components and manageability.
+*/
 class BreakoutGame
 {
 public:

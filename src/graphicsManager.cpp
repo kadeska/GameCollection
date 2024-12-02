@@ -11,11 +11,11 @@ void GraphicsManager::init(float _width, float _height)
 {
     std::cout << "Hello!!";
 
-    sprite_vs = "/shaders/breakout/sprite_vertex.vs";
-    sprite_fs = "/shaders/breakout/sprite_fragment.fs";
+    sprite_vs = "../shaders/breakout/sprite_vertex.vs";
+    sprite_fs = "../shaders/breakout/sprite_fragment.fs";
 
-    particle_vs = "/shaders/breakout/particle_vertex.vs";
-    particle_fs = "/shaders/breakout/particle_fragment.fs";
+    particle_vs = "../shaders/breakout/particle_vertex.vs";
+    particle_fs = "../shaders/breakout/particle_fragment.fs";
 
     
     std::cout << helper.combineStrings(helper.currentPathStr.c_str(), sprite_vs.c_str());

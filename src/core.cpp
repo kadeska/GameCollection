@@ -12,6 +12,8 @@
 **/
 #include "../include/core.hpp"
 #include "../include/breakoutGame.hpp"
+#include <filesystem>
+#include <vector>
 
 // GLFW function declarations
 void framebuffer_size_callback(GLFWwindow* window, int width, int height);
@@ -29,8 +31,17 @@ const unsigned int SCREEN_HEIGHT = 600;
 //BreakoutGame BreakoutGame(SCREEN_WIDTH, SCREEN_HEIGHT);// BreakoutGame(SCREEN_WIDTH, SCREEN_HEIGHT);
 //BreakoutGame BreakoutGame(SCREEN_WIDTH, SCREEN_HEIGHT);
 
+/**
+ * @brief - Breakout game object. Only one instance of this should exist.
+ * 
+ */
 BreakoutGame* game;
 
+/**
+ * @brief - Initializes the window and start the main game loop.
+ * 
+ * @return int - std::int 
+ */
 int startGame() // Entery level 1
 {
     glfwInit();
@@ -68,7 +79,8 @@ int startGame() // Entery level 1
     // The one and only Instance of BreakoutGame
     game = new BreakoutGame(SCREEN_WIDTH, SCREEN_HEIGHT);
     //game->BreakoutGame(SCREEN_WIDTH, SCREEN_HEIGHT);
-    game->Init(/** game **/);
+
+    game->Init(/** pass game object for self referance? not needed **/);
 
     // deltaTime variables
     // -------------------
@@ -109,6 +121,34 @@ int startGame() // Entery level 1
     glfwTerminate();
     return 0;
 }
+
+/**
+ * @brief - Get the Path object
+ * 
+ * @param path_string 
+ * @return fs::path - boost filesystem::path
+ */
+bfs::path getPath(std::string path_string) {}
+
+/**
+ * @brief Gets all the files in the proveded folder path.
+ * For debugging purposes this will also output all file in folder path
+ * 
+ * @param path 
+ * @return std::vector<stdfs::path> 
+ */
+std::vector<stdfs::path> getFilesInFolder(stdfs::path path) 
+{
+    std::vector<stdfs::path> fileNamePaths;
+    if(!exists(path)) {return fileNamePaths;}
+    for(const auto& entry : stdfs::directory_iterator(path))
+    {
+        std::cout << entry.path().string() << '\n';
+        fileNamePaths.push_back(entry);
+    }
+    return fileNamePaths;
+}
+
 
 void key_callback(GLFWwindow* window, int key, int scancode, int action, int mode)
 {

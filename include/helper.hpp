@@ -6,6 +6,8 @@
 #include <string>
 #include <cstring>
 
+#include "../include/core.hpp"
+
 
 class Helper
 {

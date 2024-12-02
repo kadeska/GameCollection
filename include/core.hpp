@@ -9,13 +9,22 @@
 #include "graphicsManager.hpp"
 
 #include <iostream>
+#include <filesystem>
 
 #include <boost/filesystem.hpp>
 
-
-namespace fs = boost::filesystem;
+/**
+ * @brief - boost::filesystem
+ * 
+ */
+namespace bfs = boost::filesystem;
+namespace stdfs = std::filesystem;
 
 int startGame();
-fs::path getPath(std::string path_string);
+
+
+bfs::path getPath(std::string path_string);
+
+std::vector<stdfs::path> getFilesInFolder(stdfs::path path);
 
 #endif

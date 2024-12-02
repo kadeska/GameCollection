@@ -5,6 +5,7 @@
 
 #include "../include/core.hpp"
 #include "../include/networking.hpp"
+#include "../include/helper.hpp"
 
 // using namespace std;
 
@@ -31,9 +32,15 @@ int main() // Entry level 0
   return run();
 }
 
+Helper helper;
+std::string dir = "/src/shaders/breakout";
 int run() {
   int choice;
   while (loop) {
+
+    // For debugging reasons
+    getFilesInFolder(helper.currentPathStr + dir);
+
     // Display the menu
     std::cout << "\nMain Menu:\n";
     std::cout << "1. Say Hello\n";
