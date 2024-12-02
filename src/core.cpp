@@ -77,10 +77,10 @@ int startGame() // Entery level 1
     // This is the first entry into game related code.
     // ---------------
     // The one and only Instance of BreakoutGame
-    game = new BreakoutGame(SCREEN_WIDTH, SCREEN_HEIGHT);
+    game = new BreakoutGame(SCREEN_WIDTH, SCREEN_HEIGHT /* pass filesystem path here?*/);
     //game->BreakoutGame(SCREEN_WIDTH, SCREEN_HEIGHT);
 
-    game->Init(/** pass game object for self referance? not needed **/);
+    game->Init(/** pass filesystem path here? **/);
 
     // deltaTime variables
     // -------------------
