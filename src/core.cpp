@@ -42,7 +42,7 @@ BreakoutGame* game;
  * 
  * @return int - std::int 
  */
-int startGame() // Entery level 1
+int startGame(stdfs::path _gamePath, stdfs::path _shaderPath) // Entery level 1
 {
     glfwInit();
     glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
@@ -80,7 +80,7 @@ int startGame() // Entery level 1
     game = new BreakoutGame(SCREEN_WIDTH, SCREEN_HEIGHT /* pass filesystem path here?*/);
     //game->BreakoutGame(SCREEN_WIDTH, SCREEN_HEIGHT);
 
-    game->Init(/** pass filesystem path here? **/);
+    game->Init(_gamePath, _shaderPath);
 
     // deltaTime variables
     // -------------------
@@ -123,7 +123,7 @@ int startGame() // Entery level 1
 }
 
 /**
- * @brief - Get the Path object
+ * @brief - Get the boost Path object
  * 
  * @param path_string 
  * @return fs::path - boost filesystem::path

@@ -18,7 +18,7 @@
 #include "glad/glad.h"
 #include "GLFW/glfw3.h"
 
-//#include "core.h"
+#include "core.hpp"
 #include "gameLevel.hpp"
 #include "resourceManager.hpp"
 #include "gameObject.hpp"
@@ -52,6 +52,9 @@ const glm::vec2 INITIAL_BALL_VELOCITY(100.0f, -350.0f);
 // Radius of the ball object
 const float BALL_RADIUS = 12.5f;
 
+// The above constants can be set by construction or set by config file.
+
+
 // Graphic manager.
 //GraphicsManager gfcMan;
 
@@ -71,11 +74,13 @@ public:
     unsigned int            Level; // What Level are we on
     GameObject        *Player; // Make player object its own seperate oject instead of a GameObject.
     BallObject        *Ball;
+
     // constructor/destructor
     BreakoutGame(unsigned int width, unsigned int height);
     ~BreakoutGame();
+
     // initialize game state (load all shaders/textures/levels)
-    void Init(/** BreakoutGame* **/);
+    void Init(stdfs::path _gamePath, stdfs::path _shaderPath);
     // game loop
     void ProcessInput(float dt);
     void Update(float dt);

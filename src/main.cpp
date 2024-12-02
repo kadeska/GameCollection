@@ -20,6 +20,7 @@ bool stop();
 bool loop = true;
 std::string program_args;
 std::string user_input;
+
 //-----------------------------------------functions
 
 // main function
@@ -66,7 +67,7 @@ int run() {
       break;
     case 2:
       std::cout << "\n Running Breakout Game \n";
-      startGame();
+      startGame(helper.game_path, helper.shader_path);
       break;
     case 3:
       std::cout << "\n Running Server \n";

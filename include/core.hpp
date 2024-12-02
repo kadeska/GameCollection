@@ -1,6 +1,9 @@
 #ifndef CORE_H
 #define CORE_H
 
+#include <iostream>
+#include <filesystem>
+
 #include "glad/glad.h"
 #include "GLFW/glfw3.h"
 
@@ -8,19 +11,11 @@
 #include "resourceManager.hpp"
 #include "graphicsManager.hpp"
 
-#include <iostream>
-#include <filesystem>
+#include "helper.hpp"
 
-#include <boost/filesystem.hpp>
 
-/**
- * @brief - boost::filesystem
- * 
- */
-namespace bfs = boost::filesystem;
-namespace stdfs = std::filesystem;
-
-int startGame();
+int startGame(stdfs::path _gamePath, stdfs::path _shaderPath);
+//stdfs::path _gamePath, stdfs::path _shaderPath
 
 
 bfs::path getPath(std::string path_string);
