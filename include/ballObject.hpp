@@ -10,6 +10,8 @@
 #define BALLOBJECT_H
 
 #include <glad/glad.h>
+#include <GLFW/glfw3.h> // Include GLFW (without including GL/gl.h)
+
 #include <glm/glm.hpp>
 
 #include "gameObject.hpp"

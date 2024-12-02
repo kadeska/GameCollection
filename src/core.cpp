@@ -10,10 +10,18 @@
 ** Core is responsible for the window and user input and entering into main game.
 **
 **/
+
+#include <glad/glad.h>  // Include this first
+#include <GLFW/glfw3.h> // Include GLFW (without including GL/gl.h)
+
 #include "../include/core.hpp"
 #include "../include/breakoutGame.hpp"
+#include "../include/graphicsManager.hpp"
+#include "../include/resourceManager.hpp"
+
 #include <filesystem>
-#include <vector>
+#include <iostream>
+
 
 // GLFW function declarations
 void framebuffer_size_callback(GLFWwindow* window, int width, int height);
@@ -128,7 +136,7 @@ int startGame(stdfs::path _gamePath, stdfs::path _shaderPath) // Entery level 1
  * @param path_string 
  * @return fs::path - boost filesystem::path
  */
-bfs::path getPath(std::string path_string) {}
+//bfs::path getPath(std::string path_string) {}
 
 /**
  * @brief Gets all the files in the proveded folder path.

@@ -1,22 +1,14 @@
 #ifndef HELPER_H
 #define HELPER_H
 
-//#include <boost/filesystem.hpp>
 #include <cstring>
 #include <filesystem>
 #include <iostream>
 #include <string>
-
 #include "../include/core.hpp"
 
 class Helper {
 public:
-  /**
-   * @brief - boost::filesystem
-   *
-   */
-  // namespace bfs = boost::filesystem;
-  namespace stdfs = std::filesystem;
   std::filesystem::path currentPath = std::filesystem::current_path();
   std::string currentPathStr = currentPath.string();
   // std::string currentDir = std::filesystem::current_path().string();
