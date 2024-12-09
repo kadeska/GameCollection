@@ -15,35 +15,73 @@ functionality in the future.
  * 
  */
 
-#include "../include/networking.hpp"
+
+#include "../include/client.hpp"
+//#include "../include/networking.hpp"
 #include <iostream>
-#include <boost/asio.hpp>
 
-using boost::asio::ip::tcp;
+Client::Client(boost::asio::io_context& client_io_context, const std::string& host, short port)
+    : socket_(client_io_context) {
+    connectToServer(host, port);
+}
 
-int startClient() {
+void Client::connectToServer(const std::string& host, short port) {
+    boost::asio::ip::tcp::resolver resolver(socket_.get_executor());
+    auto endpoints = resolver.resolve(host, std::to_string(port));
+    boost::asio::async_connect(
+        socket_,
+        endpoints,
+        [this](boost::system::error_code ec, const boost::asio::ip::tcp::endpoint&) {
+            if (!ec) {
+                std::cout << "Connected to server.\n";
+            } else {
+                std::cerr << "Connection failed: " << ec.message() << std::endl;
+            }
+        });
+}
+
+void Client::writeMessage(const std::string& message) {
+    boost::asio::async_write(
+        socket_,
+        boost::asio::buffer(message),
+        [this](boost::system::error_code ec, std::size_t) {
+            if (!ec) {
+                readMessage();
+            }
+        });
+}
+
+void Client::readMessage() {
+    boost::asio::async_read_until(
+        socket_,
+        boost::asio::dynamic_buffer(buffer_),
+        '\n',
+        [this](boost::system::error_code ec, std::size_t length) {
+            if (!ec) {
+                std::cout << "Server response: " << buffer_.substr(0, length);
+                buffer_.erase(0, length);
+            }
+        });
+}
+
+
+int Client::start_client() {
     try {
-        // Set up an IO context and connect to the server
-        boost::asio::io_context io_context;
-        tcp::resolver resolver(io_context);
-        tcp::resolver::results_type endpoints = resolver.resolve("127.0.0.1", "12345");
-        
-        tcp::socket socket(io_context);
-        boost::asio::connect(socket, endpoints);
 
-        // Send a message to the server
-        std::string message = "Hello from client!";
-        boost::asio::write(socket, boost::asio::buffer(message));
+        Client client(client_io_context, "127.0.0.1", 1234);
 
-        // Read the response from the server
-        char reply[1024];
-        size_t reply_length = socket.read_some(boost::asio::buffer(reply));
+        std::thread t([&client_io_context]() { client_io_context.run(); });
 
-        std::cout << "Received from server: " << std::string(reply, reply_length) << std::endl;
+        while (true) {
+            std::string message;
+            std::getline(std::cin, message);
+            message += '\n';  // Add newline for server delimiter.
+            client.writeMessage(message);
+        }
 
+        t.join();
     } catch (std::exception& e) {
-        std::cerr << "Error: " << e.what() << std::endl;
+        std::cerr << "Client error: " << e.what() << std::endl;
     }
-
     return 0;
 }

@@ -1,7 +1,3 @@
-#ifndef NETWORKING_H
-#define NETWORKING_H
+#include "server.hpp";
+#include "client.hpp";
 
-int startServer();
-int startClient();
-
-#endif

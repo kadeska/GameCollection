@@ -15,38 +15,34 @@ functionality in the future.
  * 
  */
 
+
+#include "../include/server.hpp"
 #include "../include/networking.hpp"
 #include <iostream>
-#include <boost/asio.hpp>
 
-using boost::asio::ip::tcp;
+Server::Server(boost::asio::io_context& io_context, short port)
+    : acceptor_(io_context, boost::asio::ip::tcp::endpoint(boost::asio::ip::tcp::v4(), port)) {
+    acceptConnection();
+}
 
-int startServer() {
+void Server::acceptConnection() {
+    acceptor_.async_accept(
+        [this](boost::system::error_code ec, boost::asio::ip::tcp::socket socket) {
+            if (!ec) {
+                std::cout << "New client connected.\n";
+                std::make_shared<Session>(std::move(socket))->start();
+            }
+            acceptConnection();
+        });
+}
+
+int Server::start_server() {
     try {
-        // Set up an IO context and acceptor to listen for incoming connections
-        boost::asio::io_context io_context;
-        tcp::acceptor acceptor(io_context, tcp::endpoint(tcp::v4(), 12345));
-
-        std::cout << "Server is running on port 12345..." << std::endl;
-
-        // Accept a new connection
-        tcp::socket socket(io_context);
-        acceptor.accept(socket);
-        std::cout << "Client connected!" << std::endl;
-
-        // Read data from the client
-        char data[1024];
-        size_t length = socket.read_some(boost::asio::buffer(data));
-
-        std::cout << "Received from client: " << std::string(data, length) << std::endl;
-
-        // Send a response back to the client
-        std::string response = "Hello from server!";
-        boost::asio::write(socket, boost::asio::buffer(response));
-
+        Server server(server_io_context, 1234);
+        std::cout << "Server running on port 1234...\n";
+        server_io_context.run();
     } catch (std::exception& e) {
-        std::cerr << "Error: " << e.what() << std::endl;
+        std::cerr << "Server error: " << e.what() << std::endl;
     }
-
     return 0;
 }

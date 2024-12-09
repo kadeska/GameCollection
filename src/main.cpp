@@ -21,7 +21,9 @@
 #include <string>
 
 #include "../include/core.hpp"
-#include "../include/networking.hpp"
+//#include "../include/networking.hpp"
+#include "../include/server.hpp";
+#include "../include/client.hpp";
 #include "../include/helper.hpp"
 
 // using namespace std;
@@ -38,7 +40,13 @@ bool loop = true;
 std::string program_args;
 std::string user_input;
 
-//-----------------------------------------functions
+
+// ---------------------------------------- NETWORKING
+
+Server server;
+Client client;
+
+//----------------------------------------- functions
 
 // main function
 int main() // Entry level 0
@@ -88,11 +96,11 @@ int run() {
       break;
     case 3:
       std::cout << "\n Running Server \n";
-      startServer();
+      start_server();
       break;
     case 4:
       std::cout << "\n Running Client \n";
-      startClient();
+      start_client();
       break;
     case 5:
       std::cout << "\n Running test... \n";
