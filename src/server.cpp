@@ -4,6 +4,17 @@ This is a basic server for a server/client program. Will be adding more
 functionality in the future. 
  */
 
+/**
+ * @file server.cpp
+ * @author your name (you@domain.com)
+ * @brief 
+ * @version 0.1
+ * @date 2024-12-08
+ * 
+ * @copyright Copyright (c) 2024
+ * 
+ */
+
 #include "../include/networking.hpp"
 #include <iostream>
 #include <boost/asio.hpp>
