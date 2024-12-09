@@ -4,10 +4,10 @@
 #
 
 # define the C++ compiler to use
-CXX = g++
+CXX = clang++
 
 # define any compile-time flags
-CXXFLAGS := -std=c++20 -Wall -Wextra -g
+CXXFLAGS := -std=c++17 -Wall -Wextra -g
 
 # define library paths in addition to /usr/lib
 LFLAGS := -L/usr/lib -L/usr/include -L/usr/include/glad

@@ -1,4 +1,4 @@
 make clean
 make
-clear
+# clear
 ./output/main

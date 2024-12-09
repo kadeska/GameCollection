@@ -7,6 +7,8 @@
 ** option) any later version.
 ******************************************************************/
 #include "../include/spriteRenderer.hpp"
+#include <../include/glad/glad.h>   // Or your preferred OpenGL loader
+#include <GLFW/glfw3.h>
 
 
 SpriteRenderer::SpriteRenderer(Shader &shader)

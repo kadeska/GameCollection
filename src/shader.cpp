@@ -7,6 +7,8 @@
 ** option) any later version.
 ******************************************************************/
 #include "../include/shader.hpp"
+#include <../include/glad/glad.h>   // Or your preferred OpenGL loader
+#include <GLFW/glfw3.h>
 
 #include <iostream>
 

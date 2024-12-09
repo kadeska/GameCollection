@@ -11,9 +11,11 @@
 #include <iostream>
 #include <sstream>
 #include <fstream>
+#include <../include/glad/glad.h>   // Or your preferred OpenGL loader
+#include <GLFW/glfw3.h>
 
-#define STB_IMAGE_IMPLEMENTATION
 #include "../include/resourceManager.hpp"
+#define STB_IMAGE_IMPLEMENTATION
 #include "../include/stb_image.hpp"
 
 // Instantiate static variables
