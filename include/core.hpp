@@ -6,9 +6,6 @@
 
 //#include <boost/filesystem.hpp>
 
-
-// #include "helper.hpp"
-
 /*
  * boost::filesystem
  *
@@ -20,6 +17,8 @@
 *
 */
 namespace stdfs = std::filesystem; 
+
+
 
 int startGame(stdfs::path _gamePath, stdfs::path _shaderPath);
 // stdfs::path _gamePath, stdfs::path _shaderPath

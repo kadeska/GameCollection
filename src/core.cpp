@@ -83,7 +83,7 @@ int startGame(stdfs::path _gamePath, stdfs::path _shaderPath) // Entery level 1
 
     // initialize game
     // This is the first entry into game related code.
-    // ---------------
+    // -----------------------------------------------------------------------------------------
     // The one and only Instance of BreakoutGame
     game = new BreakoutGame(SCREEN_WIDTH, SCREEN_HEIGHT /* pass filesystem path here?*/);
     //game->BreakoutGame(SCREEN_WIDTH, SCREEN_HEIGHT);

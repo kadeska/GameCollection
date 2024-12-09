@@ -44,10 +44,6 @@ public:
 protected:
 
 private:
-    std::string sprite_vs;
-    std::string sprite_fs;
-    std::string particle_vs;
-    std::string particle_fs;
 };
 
 #endif // GRAPHICSMANAGER_H

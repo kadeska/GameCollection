@@ -12,8 +12,16 @@ public:
   std::filesystem::path currentPath = std::filesystem::current_path();
   std::string currentPathStr = currentPath.string();
   // std::string currentDir = std::filesystem::current_path().string();
+
+  // game_path is the current path
   stdfs::path game_path = currentPathStr;
-  stdfs::path shader_path = game_path.string() + "/shaders/breakout";
+  // shader_path is the path to the shader directory.
+  stdfs::path shader_path = game_path.string() + "/src/shaders/breakout";
+
+  // particle fragment shader path
+  // particle vertex shader path
+  // sprite fragment shader path
+  // sprite vertex shader path
 
   // Combine two const char* strings and return char*
   // Dont forget to free memory after using this function by calling delete[]
@@ -29,7 +37,7 @@ public:
     strcpy(result, str1);
     strcat(result, str2);
 
-    std::cout << result << "HELLO!!";
+    // std::cout << result << "HELLO!!";
     return result; // return combined string
   }
 };

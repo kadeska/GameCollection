@@ -23,9 +23,10 @@ std::map<std::string, Texture2D>    ResourceManager::Textures;
 std::map<std::string, Shader>       ResourceManager::Shaders;
 
 
-Shader ResourceManager::LoadShader(const char *vShaderFile, const char *fShaderFile, const char *gShaderFile, std::string name)
+Shader ResourceManager::LoadShader(std::filesystem::path vShaderFile, std::filesystem::path fShaderFile, std::filesystem::path gShaderFile, std::string name)
 {
-    Shaders[name] = loadShaderFromFile(vShaderFile, fShaderFile, gShaderFile);
+    // std::cout << vShaderFile; for debugging
+    Shaders[name] = loadShaderFromFile(vShaderFile, fShaderFile, "");
     return Shaders[name];
 }
 
@@ -55,7 +56,7 @@ void ResourceManager::Clear()
         glDeleteTextures(1, &iter.second.ID);
 }
 
-Shader ResourceManager::loadShaderFromFile(const char *vShaderFile, const char *fShaderFile, const char *gShaderFile)
+Shader ResourceManager::loadShaderFromFile(std::filesystem::path vShaderFile, std::filesystem::path fShaderFile, std::filesystem::path gShaderFile)
 {
     // 1. retrieve the vertex/fragment source code from filePath
     std::string vertexCode;
@@ -65,8 +66,10 @@ Shader ResourceManager::loadShaderFromFile(const char *vShaderFile, const char *
     try
     {
         // open files
-        std::ifstream vertexShaderFile(vShaderFile);
-        std::ifstream fragmentShaderFile(fShaderFile);
+        std::cout << vShaderFile.c_str() << "testing dir"; // dir is not valid, need to fix. 
+
+        std::ifstream vertexShaderFile(vShaderFile.c_str());
+        std::ifstream fragmentShaderFile(fShaderFile.c_str());
         std::stringstream vShaderStream, fShaderStream;
         // read file's buffer contents into streams
         vShaderStream << vertexShaderFile.rdbuf();
@@ -81,9 +84,9 @@ Shader ResourceManager::loadShaderFromFile(const char *vShaderFile, const char *
         //std::cout << fragmentCode << "2" << '\n';
 
         // if geometry shader path is present, also load a geometry shader
-        if (gShaderFile != nullptr)
+        if (gShaderFile.c_str() != nullptr)
         {
-            std::ifstream geometryShaderFile(gShaderFile);
+            std::ifstream geometryShaderFile(gShaderFile.c_str());
             std::stringstream gShaderStream;
             gShaderStream << geometryShaderFile.rdbuf();
             geometryShaderFile.close();
@@ -99,7 +102,7 @@ Shader ResourceManager::loadShaderFromFile(const char *vShaderFile, const char *
     const char *gShaderCode = geometryCode.c_str();
     // 2. now create shader object from source code
     Shader shader;
-    shader.Compile(vShaderCode, fShaderCode, gShaderFile != nullptr ? gShaderCode : nullptr);
+    shader.Compile(vShaderCode, fShaderCode, gShaderFile.c_str() != nullptr ? gShaderCode : nullptr);
     return shader;
 }
 

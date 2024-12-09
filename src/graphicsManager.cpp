@@ -10,21 +10,14 @@ GraphicsManager::GraphicsManager()
 void GraphicsManager::init(float _width, float _height)
 {
     std::cout << "Hello!!";
-
-    sprite_vs = "../shaders/breakout/sprite_vertex.vs";
-    sprite_fs = "../shaders/breakout/sprite_fragment.fs";
-
-    particle_vs = "../shaders/breakout/particle_vertex.vs";
-    particle_fs = "../shaders/breakout/particle_fragment.fs";
-
     
-    std::cout << helper.combineStrings(helper.currentPathStr.c_str(), sprite_vs.c_str());
+    sprite_vs_dir = helper.shader_path.string() + "/sprite_vertex.vs";
+    sprite_fs_dir = helper.shader_path.string() + "/sprite_fragment.fs";
 
-    sprite_vs_dir = helper.combineStrings(helper.currentPathStr.c_str(), sprite_vs.c_str());
-    sprite_fs_dir = helper.combineStrings(helper.currentPathStr.c_str(), sprite_fs.c_str());
+    particle_vs_dir = helper.shader_path.string() + "/particle_vertex.vs";
+    particle_fs_dir = helper.shader_path.string() + "/particle_fragment.fs";
 
-    particle_vs_dir = helper.combineStrings(helper.currentPathStr.c_str(), particle_vs.c_str());
-    particle_fs_dir = helper.combineStrings(helper.currentPathStr.c_str(), particle_fs.c_str());
+    std::cout << sprite_vs_dir;
     
     width = _width;
     height = _height;
@@ -52,8 +45,8 @@ void GraphicsManager::LoadShaders()
 
     // The above code could be moved into a helper class or some sort of data management class
 
-    ResourceManager::LoadShader(sprite_vs_dir.c_str(), sprite_fs_dir.c_str(), nullptr, "sprite");
-    ResourceManager::LoadShader(particle_vs_dir.c_str(), particle_fs_dir.c_str(), nullptr, "particle");
+    ResourceManager::LoadShader(sprite_vs_dir, sprite_fs_dir, "", "sprite");
+    ResourceManager::LoadShader(particle_vs_dir, particle_fs_dir, "", "particle");
 }
 
 void GraphicsManager::ConfigureShaders()
