@@ -9,14 +9,16 @@
 
 class Helper {
 public:
-  std::filesystem::path currentPath = std::filesystem::current_path();
-  std::string currentPathStr = currentPath.string();
+  std::string currentPath = std::filesystem::current_path().string();
+  std::string currentPathStr = currentPath;
   // std::string currentDir = std::filesystem::current_path().string();
 
   // game_path is the current path
-  stdfs::path game_path = currentPathStr;
+  //stdfs::path game_path = currentPathStr;
+  std::string game_path = std::filesystem::current_path().string();;
   // shader_path is the path to the shader directory.
-  stdfs::path shader_path = game_path.string() + "/src/shaders/breakout";
+  //stdfs::path shader_path = game_path.string() + "/src/shaders/breakout";
+  std::string shader_path = game_path + "/src/shaders/breakout";
 
   // particle fragment shader path
   // particle vertex shader path

@@ -50,7 +50,7 @@ BreakoutGame* game;
  * 
  * @return int - std::int 
  */
-int startGame(stdfs::path _gamePath, stdfs::path _shaderPath) // Entery level 1
+int startGame(std::string _gamePath, std::string _shaderPath) // Entery level 1
 {
     glfwInit();
     glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);

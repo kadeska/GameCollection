@@ -41,6 +41,10 @@ int run() {
 
     // For debugging reasons
     getFilesInFolder(helper.currentPathStr + dir);
+    /**
+     * Are the file path values being passed correctly? 
+     * 
+     */
 
     // Display the menu
     std::cout << "\nMain Menu:\n";

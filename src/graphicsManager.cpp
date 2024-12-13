@@ -9,16 +9,15 @@ GraphicsManager::GraphicsManager()
 
 void GraphicsManager::init(float _width, float _height)
 {
-    std::cout << "Hello!!";
+    std::cout << "Hello!!" << '\n';
     
-    sprite_vs_dir = helper.shader_path.string() + "/sprite_vertex.vs";
-    sprite_fs_dir = helper.shader_path.string() + "/sprite_fragment.fs";
+    sprite_vs_dir = helper.shader_path + "/sprite_vertex.vs";
+    sprite_fs_dir = helper.shader_path + "/sprite_fragment.fs";
 
-    particle_vs_dir = helper.shader_path.string() + "/particle_vertex.vs";
-    particle_fs_dir = helper.shader_path.string() + "/particle_fragment.fs";
+    particle_vs_dir = helper.shader_path + "/particle_vertex.vs";
+    particle_fs_dir = helper.shader_path + "/particle_fragment.fs";
 
-    std::cout << sprite_vs_dir;
-    
+    std::cout << "sprite_vs_dir= " << sprite_vs_dir << '\n';
     width = _width;
     height = _height;
 }

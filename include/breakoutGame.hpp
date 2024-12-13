@@ -80,7 +80,7 @@ public:
     ~BreakoutGame();
 
     // initialize game state (load all shaders/textures/levels)
-    void Init(stdfs::path _gamePath, stdfs::path _shaderPath);
+    void Init(std::string _gamePath, std::string _shaderPath);
     // game loop
     void ProcessInput(float dt);
     void Update(float dt);

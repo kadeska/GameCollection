@@ -34,15 +34,16 @@ BreakoutGame::~BreakoutGame()
     //delete Renderer;  //Commenting this out fixed the segmentation fault that happens during application termination.
 }
 
-void BreakoutGame::Init(stdfs::path _gamePath, stdfs::path _shaderPath)
+void BreakoutGame::Init(std::string _gamePath, std::string _shaderPath)
 {
 
-    std::cout << _gamePath << '\n';
-    std::cout << _shaderPath << '\n';
+    std::cout << "_gamePath= " << _gamePath << '\n';
+    std::cout << "_shaderPath= " << _shaderPath << '\n';
 
     //breakoutGame = referanceToSelf;
 // GraphicsManager
     //gfcMan.GraphicsManager();
+    gfcMan.init(Width, Height);
     gfcMan.LoadShaders();
     gfcMan.ConfigureShaders();
     gfcMan.LoadTextures();
